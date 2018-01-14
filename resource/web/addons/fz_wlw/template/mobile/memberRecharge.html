@@ -1,0 +1,73 @@
+{template 'common/header'}
+<style type="text/css">
+ 	 a:link{text-decoration: none;}
+</style>
+
+<div class="mui-slider" style="text-align: center;">
+  <div class="mui-slider-group mui-slider-loop">
+    <!--支持循环，需要重复图片节点-->
+    	 <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{php echo tomedia($lives[0]);}" /></a></div>
+ 		{loop $lives $key $item}
+ 		<div class="mui-slider-item"><a href="#"><img src="{php echo tomedia($item);}" /></a></div>
+ 		{/loop} 
+    <!--支持循环，需要重复图片节点-->
+    
+  </div>
+</div>
+
+<div style="text-align: center; padding-top: 15px;">购买套餐</div>
+
+<div> 
+ 
+	 <ul class="mui-table-view mui-table-view-radio">
+	 
+	 {loop $modes $key $item}
+	 	
+	    <li class="mui-table-view-cell mui-media" tag="{$item['id']}">
+	        <a href="javascript:;" class="mui-navigate-right">
+	            <img class="mui-media-object mui-pull-left" style="width: 42px;" src="{php echo tomedia($item['packimg']);}">
+	            <div class="mui-media-body">
+	            	   <div>{$item['tcname']}</div>
+	            	   <div style="font-size: 12px;color: red;">价格:{$item['tcprice']}元  &nbsp;</div>
+	                <p class='mui-ellipsis' style="font-size: 10px;">{$item['packdes']}</p>
+	            </div>
+	        </a>  
+	    </li> 
+	 {/loop}    
+</ul> 
+
+</div>
+
+<div style="padding: 20px;text-align: center;"> 
+	<button type="button"  class="mui-btn mui-btn-success mui-btn-outlined" onclick="funSubmit();" data-loading-text="提交中" class="mui-btn">微信支付</button> 
+</div>
+
+<script type="text/javascript">
+
+	//获得slider插件对象
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+	  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+	});
+	var select_id='';
+	var list = document.querySelector('.mui-table-view.mui-table-view-radio');
+	list.addEventListener('selected',function(e){
+		//console.log("当前选中的为："+e.detail.el.innerText);
+		//alert($(e.detail.el).attr("tag"));
+		select_id=$(e.detail.el).attr("tag");
+	});
+	
+	$(".mui-slider-item").find('img').css('height','180px').css('width','100%');
+	
+	function funSubmit(){
+	 	if(select_id==""){
+	 		mui.alert('请选择购买套餐。');
+			return;
+		}
+		 
+	   window.location="{php echo $this->createMobileUrl('buyList',array('devid'=>$_GPC['devid'],'pay'=>'weixin'));}&packageid="+select_id+"i={$_W['uniacid']}";
+		
+	}
+</script>
+
+{template 'common/footer'}

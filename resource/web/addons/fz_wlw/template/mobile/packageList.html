@@ -1,0 +1,137 @@
+{template 'common/headerSui'}
+
+ <style type="text/css">
+	 .my_dev_btn{color:#fe4d7b; font-size:.75rem; margin-top:5px; border:1px solid #fe4d7b; border-radius:5px; padding:2px 15px; }
+ 	 
+ </style>
+<div class="page-group">
+<!-- page 容器  -->
+    <div class="page page-current" id="packageList"> 
+    	  	  <!-- 标题栏 -->
+        <header class="bar bar-nav nav_bg">
+            <button class="button button-link button-nav pull-left" onclick="funGoBack('{$_GPC['devid']}')">
+                <span class="icon icon-left font_color_fff"></span>
+                <span class="font_color_fff">返回</span>
+            </button>
+            <h1 class="title font_color_fff">套餐列表</h1>
+            
+           <a class="button pull-right button-warning button-fill" onclick="funGoUrl('{$_GPC['devid']}')">
+                    <span class="font_color_fff">添加套餐</span>
+           </a>
+        </header>
+        <!-- 标题栏 end-->
+        
+        <!-- 工具栏 -->
+        {template 'common/nvaSui'}
+        <!-- 工具栏 end -->
+        
+        <!-- 内容区 -->
+        <div class="content">
+      
+               <div class="list-block media-list" style=" padding-top:0px; margin:0px;">
+                  <ul id="order_all">
+                      {loop $res $key $item}
+                      <li style="border-bottom:0px solid #e5e5e5;">
+                        <a onclick="funShowOper({$item['id']})" href="javascript:void(0)" class=" item-content">
+                          <div class="item-media user_head"><img src="{php echo tomedia($item['packimg']);}" style=" width:3.5rem;height: 3.5rem;"></div>
+                          <div class="item-inner">
+                            <div class="item-title" style="color:#333333; font-size:.85rem;"> {$item['tcname']} </div>
+                            <div class="item-title-row">
+                               <div class="item-subtitle"style="color:#999999; font-size:12px; margin-top:5px; "> 
+                               			销量:{$item['sellnum']} 
+                               		<span style="display: none;">
+                               		&nbsp;	库存:{$item['stocks']}
+                               		</span>
+                               			
+                               </div>
+                               <div class="item-after" style="color:#999999; font-size:12px; margin-top:5px; ">
+                               	
+                               		{if $item['issend']=='1' }
+									 		<span style="color: green;">上架</span>	
+							 		{/if}
+							 		{if $item['issend']=='0' }
+							 			<span style="color:red;">下架</span>
+							 		{/if}
+                               	</div>
+                             </div>
+                             <div class="item-title-row">
+                               <div class="item-subtitle"style="color:#00abea; font-size:12px; margin-top:5px; ">
+                               		价格:{$item['tcprice']}元 &nbsp;信号数:{$item['signnum']}次  
+							 		{if $item['ptype']=='1' || $item['ptype']==''}
+							 			 &nbsp;脉冲
+							 		{/if}
+							 		{if $item['ptype']=='2' }
+							 			 &nbsp;定时器:{$item['countdown']}秒 
+							 		{/if}
+                               </div>
+                              </div>
+                          </div>
+                        </a>
+                      </li> 
+ 					{/loop} 
+ 					
+ 					{if count($res)==0}
+ 						<li style="text-align: center;line-height: 60px;color: red;">
+ 							没有套餐，请添加套餐
+ 						</li>
+ 					{/if}
+ 					
+                  </ul>
+              </div>
+        </div>
+        <!-- 内容区 end -->
+    </div>
+    <!-- page 容器 end --> 
+ </div>
+ <script type="text/javascript">
+ $(function(){
+ 
+	 
+  });
+ function funGoUrl(devid){
+	 	window.location="index.php?c=entry&do=packageAdd&m=fz_wlw&devid="+devid+"&i={$_W['uniacid']}";
+}
+ function funGoBack(devid){
+	window.location="index.php?c=entry&do=devManager&m=fz_wlw&i={$_W['uniacid']}";
+  }
+
+ function funShowOper(devid)
+ { 
+	  
+     var buttons1 = [
+         {
+             text: '请选择',
+             label: true
+         },
+         {
+             text: '修改',
+             bold: true,
+             color: 'danger',
+             onClick: function () {
+        			 window.location="index.php?c=entry&do=packageAdd&m=fz_wlw&packageid="+devid+"&i={$_W['uniacid']}&devid={$_GPC['devid']}";
+             }
+         },{
+             text: '删除',
+             bold: true,
+             color: 'danger',
+             onClick: function () {  
+        	 window.location="index.php?c=entry&do=packageList&m=fz_wlw&delId="+devid+"&i={$_W['uniacid']}&devid={$_GPC['devid']}";
+             }
+         }
+      ];
+    
+         var buttons2 = [
+             {
+                 text: '取消',
+                 bg: 'danger'
+             }
+         ];
+
+       
+         var groups = [buttons1, buttons2];
+         $.actions(groups);
+      
+ }
+ 
+</script>
+{template 'common/footerSui'}

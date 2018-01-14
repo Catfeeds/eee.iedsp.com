@@ -1,0 +1,142 @@
+{template 'common/headerSui'}
+ <style type="text/css">
+	 .my_dev_btn{color:#fe4d7b; font-size:.75rem; margin-top:5px; border:1px solid #fe4d7b; border-radius:5px; padding:2px 15px; }
+ 	 
+ </style>
+
+<!-- page 容器  -->
+    <div class="page page-current" id="packageList"> 
+    	  	  <!-- 标题栏 -->
+        <header class="bar bar-nav nav_bg"> 
+        	<a class="icon icon-refresh pull-right" style="color: white;" onclick="funReload()"></a>
+            <h1 class="title font_color_fff">支付通知</h1>
+        </header>
+        <!-- 标题栏 end-->
+        
+        <!-- 工具栏 -->
+         
+        <!-- 工具栏 end -->
+        
+        <!-- 内容区 -->
+        <div class="content">
+            <!--head --> 
+                  	<div style="margin: 10px;font-size: 16px;color: red;text-align: center;">
+                  		<img alt="" src="{php echo tomedia('qrcode_'.$_W['uniacid'].'.jpg')}" style="width: 150px;height: 150px;">
+                  		 
+                  		<div style="margin-top: -10px;margin-bottom:-10px;font-size: 14px;">长按图片识别图中二维码关注公众号</div>
+                  		<br/>
+                  		<img alt="" src="/app/resource/sui/img/gou.png" style="width: 40px;height: 40px;">
+                  		<br/>
+                  		恭喜您,购买套餐成功,如有问题请关注公众号联系商家申请退款.
+                  	 </div>	
+                  	<h4 style="text-align: center;">最近购买记录 &nbsp;
+                  		<a href="javascript:void(0)" onclick="funReload()">刷新最新状态</a>
+                  	</h4>
+                  	
+                  	<!--订单列表-->
+                  <div class="content-block" style="margin:0px; padding:0px;">
+                      <div class="tabs">
+                          <!--已完成-->
+                          <div id="tab1" class="tab active">
+                              <div class="list-block media-list" style=" padding-top:0px; margin:0px;">
+                                  <ul id="order_ul1">
+                                      	 
+                                  </ul>
+                              </div>
+                          </div>
+                          <!--全部 end-->
+                          <!--待付款-->
+                          <div id="tab2" class="tab">
+                              <div class="list-block media-list" style=" padding-top:0px; margin:0px;">
+                                  <ul id="order_ul0"></ul>
+                              </div>
+                          </div>
+                          <!--待付款 end-->
+                          <!--已取消-->
+                          <div id="tab3" class="tab">
+                              <div class="list-block media-list" style=" padding-top:0px; margin:0px;">
+                                  <ul id="order_ul2"></ul>
+                              </div>
+                          </div>
+                          <!--已取消 end--> 
+
+                      </div>
+                  </div>
+                  <!--订单列表 end-->
+                  	 
+                  	 
+                  	 
+            <!--head end-->
+        </div>
+        <!-- 内容区 end -->
+         
+    </div>
+    <!-- page 容器 end -->
+ <script type="text/javascript">
+
+ var paystate='1';
+ var bus_id='order_ul1'; 
+ var needPage=1;
+ var isGet=true;
+ getNoteList();
+ function selectItem(state, bus_div) { 
+     paystate=state;
+     bus_id=bus_div; 
+     needPage=1;
+     $('#' + bus_div).html('');
+     getNoteList(); 
+ }
+
+ function funReload(){
+	 window.location.reload(); 
+  }
+
+ function getNoteList() {
+	 if(!isGet){
+		 return;
+    }
+	 isGet=false;
+	  //alert(needPage);
+	 
+	 $.showPreloader();
+	$.ajax({  
+		type: 'POST', 
+		url: "index.php?c=entry&do=payResult&m=fz_wlw&i={$_W['uniacid']}",
+		data: {  
+			paystate:paystate, 
+			needPage:needPage, 
+            loadPage:'findByList'
+		},
+		success: function (data) {  
+			
+			isGet=true; 
+			 $.hidePreloader();	  
+			 if(data==null|| data==''){
+					return;
+				 } 
+			  var str='('+data+')';
+	 	 	 var obj=eval(str);  
+			  var html=obj.html; 
+			 
+			  var count=parseFloat(obj.count);
+			  
+
+               if (html != "" && count!=0)
+               {
+            	   html += '<li style="text-align:center;" class="load_more_btn"><br/><a href="#" onclick="funPageNext()">查询更多</a><br/><br/></li>';
+               } 
+               
+               $('#' + bus_id).append(html); 
+		} 
+	});
+
+ }
+
+	 function funPageNext(){
+	        $(".load_more_btn").hide();
+	    	needPage++;
+	    	getNoteList();
+	 } 
+ 	
+</script>
+{template 'common/footerSui'}

@@ -1,0 +1,200 @@
+{template 'common/header'}
+ 
+ <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:{$dev['province']}{$dev['city']}{$dev['area']}{$dev['address']}{$dev['devname']}</div>
+ 
+<ul class="nav nav-tabs">
+	<li ><a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}" class="fa fa-reply-all">返回设备列表</a></li>
+	<li ><a href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备信息</a></li> 
+	<li  ><a href="{php echo url('site/entry/yedetail', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">钱包管理</a></li> 
+	 <li class="active"><a href="{php echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">订单管理</a></li>
+ 	<li ><a href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">套餐管理</a></li>
+</ul>
+
+<div class="clearfix">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">查询</h3>
+  </div>
+  <div class="panel-body">
+     <form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
+		 
+		 <div class="col-sm-6"> 
+	 		<div class="form-group">  
+			    <label for="lab" class="col-sm-5 control-label">订单状态</label>
+			    <div class="col-sm-7">
+			       <select id="paystate" name="paystate" class="form-control"> 	
+			       	 	<option value="">所有</option>
+			    		<option value="0">未支付</option>
+			    		<option value="1">已支付</option>
+			    		<option value="2">已退款</option>
+			    	</select>
+			    </div>
+			  </div>
+		 </div>
+		 
+		 <div class="col-sm-6"> 
+		 		<div class="form-group">  
+				    <label for="lab" class="col-sm-5 control-label">订单状态</label>
+				    <div class="col-sm-7"> 
+				      <select id="paysend" name="paysend" class="form-control"> 	
+				       	 	<option value="">所有</option>
+				    		<option value="0">未触发</option>
+				    		<option value="1">已触发</option>
+				    		<option value="2">触发成功</option>
+				    		<option value="3">触发失败</option>
+				    	</select> 
+				    </div>
+				  </div>
+		 </div>
+		 
+		  <div class="col-sm-6"> 
+		  		<div class="form-group">  
+			    <label for="lab" class="col-sm-5 control-label">时间查询</label>
+			    <div class="col-sm-7">
+			    	{php echo tpl_form_field_daterange('time', array('starttime'=>($starttime ? date('Y-m-d', $starttime) : false),'endtime'=> ($endtime ? date('Y-m-d', $endtime) : false)));}
+			    </div>
+			  </div>
+		  </div>
+		  
+		  <div class="col-sm-6"> 
+		  		<div class="form-group">  
+			    <label for="lab" class="col-sm-5 control-label">订单号</label>
+			    <div class="col-sm-7">
+			      <input type="text" class="form-control" value="{$_GPC['query_id']}" id="query_id" name="query_id" placeholder="订单号">
+			    </div>
+			  </div>
+		  </div>
+		  
+		
+		  
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10"> 
+		      <input type="hidden" name="devid" value="{$_GPC['devid']}">
+		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="submit" name="query" id="btn_query" class="btn" value="查询"> 
+		       <input type="hidden" name="page" id="page" value="1">
+		    </div> 
+		  </div>
+		</form> 
+  </div>
+</div>
+
+<div class="panel panel-default"> 
+  <div class="panel-body table-responsive">
+    	<table class="table table-bordered table-hover">
+    		<thead>
+				<tr>
+					<th>订单号</th>
+					<th width="160px;">收款用户/设备号</th>
+                    <th>购买用户</th> 
+                    <th>金额(元)</th>  
+                    <th>信号数</th>  
+                    <th>订单状态</th>  
+                    <th>触发状态</th> 
+                    <th>下单时间</th> 
+                    <th>支付信息</th> 
+                    <th>设备描述</th>
+                    
+				</tr>
+			</thead>
+			<tbody>
+				{loop $res $key $item}
+					<tr>
+					 	<td>{$item['id']}</td>
+					 	<td>
+					 	{$item['username']}<br/>
+					 	{$item['devNum']}
+					 	</td> 
+					 	<td>{$item['buyuser']}</td> 
+					 	<td>{$item['paymoney']}</td>
+					 	<td>{$item['paynum']}</td>  
+					 	<td>  
+					 		{if $item['paystate']=='0' }
+					 			<span style="color: black;">未支付</span>
+					 		{/if}
+					 		{if $item['paystate']=='1' }
+					 			<span style="color:green;">已支付</span>
+					 		{/if}
+					 		{if $item['paystate']=='2' }
+					 			<span style="color:red;">已退款</span>
+					 		{/if}
+					 	</td>  
+					 	<td>  
+					 		{if $item['paysend']=='0' }
+					 			<span style="color: black;">未触发</span>
+					 		{/if}
+					 		{if $item['paysend']=='1' }
+					 			<span style="color:blue;">已触发</span>
+					 		{/if}
+					 		{if $item['paysend']=='2' }
+					 			<span style="color:green;">触发成功</span>
+					 		{/if}
+					 		{if $item['paysend']=='3' }
+					 			<span style="color:red;">触发失败</span>
+					 		{/if}
+					 		<br/>
+					 		<span>{$item['remark']}</span>
+					 	</td>  
+					 	<td style="white-space:normal;">{php echo date("Y-m-d H:i:s",$item['addtime'])}</td>   
+					 	<td style="white-space:normal;width: 120px;">
+					 		 {if $item['paytime']!=''} 
+					 			{php echo date("Y-m-d H:i:s",$item['paytime'])}<br/>
+					 		{/if}
+					 		{$item['payordernum']} 
+					 	</td>   
+					 	<td style="white-space:normal;">{$item['devname']}</td>
+					</tr> 
+			    {/loop} 
+			
+			</tbody> 
+	 </table>  
+	 
+	 <!-- 分页 -->
+	 <div style="text-align: center;margin-top: 10px;">
+	 {$pager}
+     </div>	
+	 <!-- 分页end -->
+	 
+  </div>
+</div> 
+</div>
+<form class="form-horizontal" action="" method="post" id="frmdel">  
+     <input type="hidden" name="token" value="{$_W['token']}">
+</form>
+<script type="text/javascript">
+	function funQuerySubmit(){
+		 
+		 return true; 
+	}
+    
+	function funDelete(id){
+		if(id==""){
+			return;
+		}
+		var agr="温馨提示：您确定要删除吗？";
+		if(window.confirm(agr)){
+			$("#delId").val(id);
+			$("#frmdel").submit();
+		}
+     }
+
+    $(function(){
+		var paystate="{$_GPC['paystate']}";
+		$("#paystate").val(paystate);
+
+		var paysend="{$_GPC['paysend']}";
+		$("#paysend").val(paysend);
+    	  
+    });
+
+    function setPageIndex(page){
+		$("#page").val(page); 
+		$("#btn_query").click();
+    }
+      
+</script>
+
+  
+
+{template 'common/footer'}

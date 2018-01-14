@@ -1,0 +1,197 @@
+{template 'common/header'}
+ 
+ <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:{$dev['province']}{$dev['city']}{$dev['area']}{$dev['address']}{$dev['devname']}</div>
+ 
+<ul class="nav nav-tabs">
+	<li ><a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}" class="fa fa-reply-all">返回设备列表</a></li>
+	<li><a href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备信息</a></li>
+  	<li><a href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">套餐列表</a></li>
+	<li><a href="{php echo url('site/entry/packageAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">添加套餐</a></li>
+	<li><a href="{php echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">订单管理</a></li>
+	<li class="active"><a href="{php echo url('site/entry/reCardList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">充值卡管理</a></li> 
+</ul>
+
+<div class="clearfix">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">查询</h3>
+  </div>
+  <div class="panel-body">
+     <form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">卡名称</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" value="{$_GPC['typename']}" id="query_typename" name="typename" placeholder="卡名称">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10"> 
+		      <input type="hidden" name="devid" value="{$_GPC['devid']}">
+		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="submit" name="query" class="btn" value="查询"> 
+		      <input type="button" class="btn btn-success" value="添加会员卡" onclick="funAddType()"> 
+		    </div> 
+		  </div>
+		</form> 
+  </div>
+</div>
+
+<div class="panel panel-default"> 
+  <div class="panel-body table-responsive">
+    	<table class="table table-bordered table-hover">
+    		<thead>
+				<tr>
+					<th>卡名</th>
+					<th>面值(元)</th>
+					<th>折扣</th>
+					<th>实际支付(元)</th>
+                    <th>排序</th>  
+                    <th >操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $res $key $item}
+					<tr>
+					 	<td>{$item['typename']}</td> 
+					 	<td>{$item['amount']}</td> 
+					 	<td>{$item['discount']}</td> 
+					 	<td>{php echo $item['amount'] * $item['discount'];}</td> 
+					 	<td>{$item['typesort']}</td> 
+					 	<td>
+					 		<a class="btn btn-default" onclick="funEdit('{$item['id']}','{$item['typename']}','{$item['typesort']}','{$item['amount']}','{$item['discount']}')" role="button">
+					 			<span class="glyphicon glyphicon-edit"></span> 
+					 		</a>
+					 		<a class="btn btn-default" onclick="funDelete('{$item['id']}')" role="button">
+					 			<span class="glyphicon glyphicon-remove"></span> 
+					 		</a>
+					   </td>
+					</tr> 
+			    {/loop}
+				
+			
+			</tbody>
+						
+	 </table>
+						
+  </div>
+</div> 
+</div>
+<form class="form-horizontal" action="" method="post" id="frmdel"> 
+	 <input type="hidden" name="delId" id="delId" value="">
+     <input type="hidden" name="devid" value="{$_GPC['devid']}">
+     <input type="hidden" name="token" value="{$_W['token']}">
+</form>
+<script type="text/javascript">
+	function funQuerySubmit(){
+		var typename=$("#query_typename").val();
+        if(typename==""){
+            	alert("卡名称不能为空");
+				return false;
+        } 
+		 return true; 
+	}
+    function funSubmit(){
+         var typename=$("#typename").val();
+         if(typename==""){
+             	alert("卡名称不能为空");
+				return false;
+         } 
+		 return true; 
+    }
+	function funAddType(){
+		$("#packtypeid").val("");
+		$('#myModal_addMode').modal('toggle'); 
+	}
+	function funEdit(id,name,sort,amount,discount){
+		$("#typename").val(name);
+		$("#packtypeid").val(id);
+		$("#amount").val(amount);
+		$("#discount").val(discount); 
+		$("#typesort").val(sort);
+		$('#myModal_addMode').modal('toggle'); 
+	}
+    function funDelete(id){
+		if(id==""){
+			return;
+		}
+		var agr="温馨提示：您确定要删除吗？";
+		if(window.confirm(agr)){
+			$("#delId").val(id);
+			$("#frmdel").submit();
+		}
+     }
+
+    $(function(){
+
+    	  
+    });
+      
+</script>
+
+ <!-- Modal 添加分类 -->
+<div class="modal fade" id="myModal_addMode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">设置充值卡</h4>
+      </div>
+      <div class="modal-body"> 
+      	
+      	<form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funSubmit()"> 
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">卡名称</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="typename" value="{$packtype['typename']}" name="typename" placeholder="例如:100元充值卡">
+		    </div>
+		  </div>
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">面值</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="amount" value="{$packtype['amount']}" name="amount" placeholder="购买后进入会员钱包的金额">
+		    </div>
+		  </div>
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">折扣</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="discount" value="{$packtype['discount']}" name="discount" placeholder="例如:85折，输入0.85">
+		   	
+		    </div>
+		  </div>
+		  <div class="form-group" style="display: none;">  
+		    <label for="lab" class="col-sm-2 control-label">实际付款</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="fact_amount" value="{$packtype['fact_amount']}" name="fact_amount" placeholder="会员实际支付的金额">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">分类排序</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="typesort" value="{$packtype['typesort']}" name="typesort" placeholder="分类排序">
+		    </div>
+		  </div>
+		  
+		   
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10">
+		    	<input type="hidden" name="packtypeid" id="packtypeid" value="{$_GPC['packtypeid']}">
+		      <input type="hidden" name="devid" value="{$_GPC['devid']}">
+		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="submit" name="save" class="btn btn-success" value="保存"> 
+		    </div> 
+		  </div>
+		</form> 
+      	
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>    
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 添加分类  end--> 
+
+{template 'common/footer'}

@@ -1,0 +1,66 @@
+{template 'common/headerSui'}
+ <style type="text/css">
+	 .my_dev_btn{color:#fe4d7b; font-size:.75rem; margin-top:5px; border:1px solid #fe4d7b; border-radius:5px; padding:2px 15px; }
+ 	 
+ </style>
+
+<!-- page 容器  -->
+    <div class="page page-current" id="packageList"> 
+    	  	  <!-- 标题栏 -->
+        <header class="bar bar-nav nav_bg">
+            <button class="button button-link button-nav pull-left" onclick="funGoBack('{$_GPC['devid']}')">
+                <span class="icon icon-left font_color_fff"></span>
+                <span class="font_color_fff">返回</span>
+            </button>
+            <h1 class="title font_color_fff">个人设置</h1> 
+           
+        </header>
+        <!-- 标题栏 end-->
+        
+        <!-- 工具栏 -->
+        {template 'common/nvaSui'}
+        <!-- 工具栏 end -->
+        
+        <!-- 内容区 -->
+        <div class="content">
+            <!--head -->
+             
+                 <form class="mui-input-group" method="post" onsubmit="return funSubmit()">
+		        	<div class="content-block login_input">
+		           	 <p><input type="text"" name="realname" value="{$profile['realname']}" id="realname" placeholder="真实姓名" /></p>
+		           </div>
+		           <div class="content-block login_input">
+		           	 <p><input type="text" name="nickname" value="{$profile['nickname']}" id="nickname" placeholder="昵称" /></p>
+		           </div>
+		            <div class="content-block login_input">
+		              <p><input type="text" name="qq" id="qq" value="{$profile['qq']}" placeholder="qq号码" /></p>
+		           </div>
+		           
+		           <div class="content-block" style="padding-bottom:0px;">
+		           		 <input type="hidden" name="token" value="{$_W['token']}">
+		           		 <p>
+		           			 <button type="submit" name="submit" style="margin: auto;width: 100%;" value="save" class="button button-big login_btn" >保存</button> 
+		           		 </p> 
+		                
+		           </div>
+		       </form>
+             
+
+            <!--head end-->
+        </div>
+        <!-- 内容区 end -->
+         
+    </div>
+    <!-- page 容器 end -->
+ <script type="text/javascript">
+ 
+ function funGoBack(devid){
+	window.location="index.php?c=entry&do=devHome&m=fz_wlw&i={$_W['uniacid']}";
+  }
+function funSubmit(){
+
+	return true;
+}
+ selectNav('my_info');
+</script>
+{template 'common/footerSui'}

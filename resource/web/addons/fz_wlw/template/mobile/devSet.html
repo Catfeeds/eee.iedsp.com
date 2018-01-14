@@ -1,0 +1,234 @@
+{template 'common/header'}
+<style type="text/css">
+	 .help-block img{width: 50px;height: 50px;}
+	 .my_title{background-color:#00abea;line-height: 4rem;text-align: center;color: white;position: relative;}
+	 .my_title_back{ position: absolute;top: 0px;left: 18px;}
+</style>
+
+<div class="my_title"> 
+	<div class="my_title_back">
+		<a onclick="funGoBack('{$_GPC['devid']}')" style="color: white;">>返回</a>
+	</div> 
+		设备设置
+</div> 
+ 
+<form class="mui-input-group" method="post">
+    <div class="mui-input-row">
+        <label>设备名称</label>
+    	<input type="text" class="mui-input-clear" id="devname" value="{$dev['devname']}" name="devname" placeholder="设备名称">
+    </div>
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>设备ID</label>
+    	<input type="text" class="form-control" id="devNum" value="{$dev['devNum']}" name="devNum" placeholder="设备ID">
+    </div>
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>设备注册码</label>
+	    <input type="text" class="form-control" id="devregcode" value="{$dev['devregcode']}" name="devregcode" placeholder="">
+    </div>
+    
+    <div class="mui-input-row">
+        <label>所属用户</label>
+	    <select id="username" name="username" class="form-control"> 
+    		{loop $ssuser $key $item} 
+       		 <option value="{$item['username']}">{$item['username']}</option>
+        	{/loop}  
+    	</select>  
+    </div>
+    <div class="mui-input-row" style="text-align: center;color: red;">
+    	<div>设备转移到哪个用户，就选择所属用户进行修改。</div>
+    </div>
+    <div class="mui-input-row" style="display: none;">
+        <label>合作用户</label>
+	    <select id="unuser" name="hzunuser" class="form-control"> 
+      		<option value="">无</option>
+    		{loop $ssuser $key $item} 
+       		 <option value="{$item['username']}">{$item['username']}</option>
+        	{/loop}  
+    	</select> 
+    </div>
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>设备类型</label> 
+        <input type="text" class="form-control" value="{$dev['devtype']}" id="devtype" name="devtype" placeholder="">
+         
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>脉冲宽度</label>
+    	<input type="number" class="form-control" value="{$dev['cycle']}" id="cycle" name="cycle" placeholder="">
+    </div>
+    
+     <div class="mui-input-row">
+        <label>脉冲间隔</label> 
+    	<input type="text" class="form-control" value="{$dev['interval']}" id="interval" name="interval" placeholder="">
+    </div>
+    
+     <div class="mui-input-row" style="display: none;">
+        <label>心跳周期</label>
+    	<input type="text" class="form-control" value="{$dev['heartbeat']}" id="heartbeat" name="heartbeat" placeholder="仅用于第六代">
+    </div>
+    
+    <div class="mui-input-row">
+        <label>礼品库存</label>
+    	 <input type="text" class="form-control" id="giftnum" value="{$dev['giftnum']}" name="giftnum" placeholder="">
+    </div>
+    
+    <div class="mui-input-row" style="height: auto;">
+        <label>设备LOGO</label>
+        <div style="text-align: center;">
+    	 {php echo tpl_form_field_image('devlogo',$dev['devlogo']);} 
+    	 </div>
+    </div>
+    
+    <div class="mui-input-row">
+        <label>报障电话</label>
+    	 <input type="text" class="form-control" id="telnum" value="{$dev['telnum']}" name="telnum" placeholder="">
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>营业时间</label> 
+    	 <input type="text" class="form-control" value="{$dev['bustime']}" id="bustime" name="bustime" placeholder="">
+    </div>
+    
+    <div class="mui-input-row" style="height: auto;">
+        <label>设备特色</label> 
+        <textarea rows="5" cols="10" id="feature" name="feature">{$dev['feature']}</textarea>
+ 
+    </div>
+    
+     <div class="mui-input-row" style="height: auto;">
+        <label>广告图片</label>  
+    	 {php echo tpl_app_form_field_image('live',$dev['live']);} 
+    	 
+    </div>
+    
+    <div class="mui-input-row">
+        <label>所在地区</label>
+    	 {php echo tpl_app_form_field_district('addrstr',array('province'=>$dev['province'],'city'=>$dev['city'],'district'=>$dev['area']));}
+    </div>
+    
+    <div class="mui-input-row">
+        <label>详细地址</label>
+    	 <input type="text" class="form-control" value="{$dev['address']}" id="address" name="address" placeholder="">
+    </div>
+    
+     <div class="mui-input-row" style="height: auto;display: none;">
+        <label>地图标识</label>
+        
+        {php echo tpl_form_field_coordinate('mapstr',array('lng'=>$dev['lng'],'lat'=>$dev['lat']));}
+        
+        
+    </div>
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>商家通知</label>
+    	<input type="email" class="form-control" value="{$dev['busemail']}" name="busemail" id="busemail" aria-label="">
+    	
+    </div>
+    
+	<div class="mui-input-row mui-checkbox" style="display: none;">
+	  <label>开启通知</label>
+	  <input type="checkbox" name="emailonoff" value="0" id="emailonoff" onclick="funCheckOnOff(this)">
+	</div>
+    
+    
+   
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>排序</label>
+         <div class="mui-numbox">
+		   
+		  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+		  <input class="mui-numbox-input" type="number" value="{$dev['dsort']}" id="dsort" name="dsort"/>
+		  
+		  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		</div>
+    	 
+    </div>
+    
+    
+    
+    
+    <div class="mui-input-row" style="height: auto;">
+        <label>状态</label>
+         <div class="mui-row">
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>开启</label>
+					<input type="radio" name="dstate" id="dstate1" value="1">
+				</div> 
+         	</div>
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label> 关闭</label>
+					<input type="radio" name="dstate" id="dstate0" value="0">
+				</div> 
+         	</div>
+         	
+         </div> 
+    </div>
+    
+    <div class="mui-button-row">
+    	
+    	 <input type="hidden" name="id" value="{$_GPC['devid']}">
+		  <input type="hidden" name="token" value="{$_W['token']}">
+    	
+        <button type="submit" name="submit" value="save" class="mui-btn mui-btn-primary" >确认</button> 
+    </div>
+</form>
+
+
+<script type="text/javascript">
+
+function funSubmit(){
+    var devName=$("#devName").val();
+    if(devName==""){
+        	alert("设备名称不能为空");
+			return false;
+    }  
+    
+	 return true; 
+}
+
+function funCheckOnOff(obj){
+	 
+	if($(obj).prop("checked")){
+		 $(obj).val("1");
+		
+	}else{
+		$(obj).val("0"); 
+	 }
+
+}
+
+var state="{$dev['dstate']}";  
+ var username="{$dev['username']}";  
+var unuser="{$dev['unuser']}";
+ 
+$("#username").val(username);
+$("#unuser").val(unuser);
+	 if(state=='0'){ 
+	 $("#dstate0").attr("checked","true");
+}
+	 else{
+		$("#dstate1").attr("checked","true");
+} 
+	 var emailonoff="{$dev['emailonoff']}"; 
+	 if(emailonoff=='0'){ 
+		 $("#emailonoff").val(0);
+	 $("#emailonoff").prop("checked",false);
+}
+	 else if(emailonoff=='1'){
+		$("#emailonoff").val(1);
+		$("#emailonoff").prop("checked",true); 
+}  
+ function funGoBack(devid){
+		window.location="index.php?c=entry&do=devManager&m=fz_wlw&username=&i={$_W['uniacid']}";
+	  }
+</script>
+
+{template 'common/footer'}

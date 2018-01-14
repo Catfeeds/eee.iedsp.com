@@ -1,0 +1,386 @@
+2018/1/13 7:13:10 触发修改:update ims_fz_order set paysend=1 where id=16972
+2018/1/13 7:13:12 查询订单:select * from ims_fz_order  where id=16972 and paysend=1
+2018/1/13 7:13:12 触发成功修改:update ims_fz_order set paysend=2 where id=16972
+2018/1/13 7:13:12 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 7:13:12 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 7:13:12 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 9:58:09 触发修改:update ims_fz_order set paysend=1 where id=16973
+2018/1/13 9:58:11 查询订单:select * from ims_fz_order  where id=16973 and paysend=1
+2018/1/13 9:58:11 触发成功修改:update ims_fz_order set paysend=2 where id=16973
+2018/1/13 9:58:11 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 9:58:11 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 9:58:11 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 9:58:11 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 9:58:11 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0gFV70j9ymGWn0hxD6V5vno','',1,'16973','销售收入','0')
+2018/1/13 10:20:17 触发修改:update ims_fz_order set paysend=1 where id=16974
+2018/1/13 10:20:20 查询订单:select * from ims_fz_order  where id=16974 and paysend=1
+2018/1/13 10:20:20 触发成功修改:update ims_fz_order set paysend=2 where id=16974
+2018/1/13 10:20:20 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 10:20:20 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 10:20:20 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 10:35:43 触发修改:update ims_fz_order set paysend=1 where id=16975
+2018/1/13 10:35:45 查询订单:select * from ims_fz_order  where id=16975 and paysend=1
+2018/1/13 10:35:45 触发成功修改:update ims_fz_order set paysend=2 where id=16975
+2018/1/13 10:35:45 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 10:35:45 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 10:35:45 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 10:35:45 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 10:35:45 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0ujv4lRW_galFLod8Olk_X8','',1,'16975','销售收入','0')
+2018/1/13 11:16:44 触发修改:update ims_fz_order set paysend=1 where id=16976
+2018/1/13 11:16:47 查询订单:select * from ims_fz_order  where id=16976 and paysend=1
+2018/1/13 11:16:47 触发成功修改:update ims_fz_order set paysend=2 where id=16976
+2018/1/13 11:16:47 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:16:47 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:16:47 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 11:16:47 分销奖金1:update ims_users set balance=balance+0.49,leiji=leiji+0.49,resultnum=resultnum+0.49 where username='sysmanager'
+2018/1/13 11:16:47 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15098,0.49,2,now(),1,'杭州滨江垃圾街1号-出售纸巾',0,'oYZxZ0vHbqhYkJ9SPzccl15ZME2g','',1,'16976','销售收入','0')
+2018/1/13 11:46:36 触发修改:update ims_fz_order set paysend=1 where id=16977
+2018/1/13 11:46:38 查询订单:select * from ims_fz_order  where id=16977 and paysend=1
+2018/1/13 11:46:38 触发成功修改:update ims_fz_order set paysend=2 where id=16977
+2018/1/13 11:46:38 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:46:38 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:46:38 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 11:46:38 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 11:46:38 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0tXATKWkkF1JDL9fZAIgodM','',1,'16977','销售收入','0')
+2018/1/13 11:54:24 触发修改:update ims_fz_order set paysend=1 where id=16978
+2018/1/13 11:54:27 查询订单:select * from ims_fz_order  where id=16978 and paysend=1
+2018/1/13 11:54:27 触发成功修改:update ims_fz_order set paysend=2 where id=16978
+2018/1/13 11:54:27 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:54:27 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:54:27 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 11:54:27 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 11:54:27 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0vE-Z9xt8bYRBaBNRHmaJXc','',1,'16978','销售收入','0')
+2018/1/13 11:57:49 触发修改:update ims_fz_order set paysend=1 where id=16979
+2018/1/13 11:57:51 查询订单:select * from ims_fz_order  where id=16979 and paysend=1
+2018/1/13 11:57:51 触发成功修改:update ims_fz_order set paysend=2 where id=16979
+2018/1/13 11:57:51 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:57:51 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:57:51 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 11:58:13 触发修改:update ims_fz_order set paysend=1 where id=16980
+2018/1/13 11:58:14 查询订单:select * from ims_fz_order  where id=16980 and paysend=1
+2018/1/13 11:58:14 触发成功修改:update ims_fz_order set paysend=2 where id=16980
+2018/1/13 11:58:14 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:58:14 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:58:14 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 11:58:34 触发修改:update ims_fz_order set paysend=1 where id=16981
+2018/1/13 11:58:35 查询订单:select * from ims_fz_order  where id=16981 and paysend=1
+2018/1/13 11:58:35 触发成功修改:update ims_fz_order set paysend=2 where id=16981
+2018/1/13 11:58:35 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 11:58:35 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 11:58:35 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:21:31 触发修改:update ims_fz_order set paysend=1 where id=16982
+2018/1/13 12:21:33 查询订单:select * from ims_fz_order  where id=16982 and paysend=1
+2018/1/13 12:21:33 触发成功修改:update ims_fz_order set paysend=2 where id=16982
+2018/1/13 12:21:33 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:21:33 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:21:33 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:25:52 触发修改:update ims_fz_order set paysend=1 where id=16983
+2018/1/13 12:25:54 查询订单:select * from ims_fz_order  where id=16983 and paysend=1
+2018/1/13 12:25:54 触发成功修改:update ims_fz_order set paysend=2 where id=16983
+2018/1/13 12:25:54 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:25:54 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:25:54 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:25:54 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 12:25:54 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0gCGGqZkV_T3Pm3o7LIDBXI','',1,'16983','销售收入','0')
+2018/1/13 12:26:37 触发修改:update ims_fz_order set paysend=1 where id=16984
+2018/1/13 12:26:39 查询订单:select * from ims_fz_order  where id=16984 and paysend=1
+2018/1/13 12:26:39 触发成功修改:update ims_fz_order set paysend=2 where id=16984
+2018/1/13 12:26:39 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:26:39 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:26:39 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:26:39 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 12:26:39 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0gCGGqZkV_T3Pm3o7LIDBXI','',1,'16984','销售收入','0')
+2018/1/13 12:27:13 触发修改:update ims_fz_order set paysend=1 where id=16985
+2018/1/13 12:27:15 查询订单:select * from ims_fz_order  where id=16985 and paysend=1
+2018/1/13 12:27:15 触发成功修改:update ims_fz_order set paysend=2 where id=16985
+2018/1/13 12:27:15 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:27:15 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:27:15 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:27:15 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 12:27:15 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0gCGGqZkV_T3Pm3o7LIDBXI','',1,'16985','销售收入','0')
+2018/1/13 12:30:07 触发修改:update ims_fz_order set paysend=1 where id=16986
+2018/1/13 12:30:09 查询订单:select * from ims_fz_order  where id=16986 and paysend=1
+2018/1/13 12:30:09 触发成功修改:update ims_fz_order set paysend=2 where id=16986
+2018/1/13 12:30:09 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:30:09 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:30:09 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:36:47 触发修改:update ims_fz_order set paysend=1 where id=16987
+2018/1/13 12:36:49 查询订单:select * from ims_fz_order  where id=16987 and paysend=1
+2018/1/13 12:36:49 触发成功修改:update ims_fz_order set paysend=2 where id=16987
+2018/1/13 12:36:49 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:36:49 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:36:49 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:36:49 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 12:36:49 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0mjEICWRNtN8lW_V1PJsY3U','',1,'16987','销售收入','0')
+2018/1/13 12:45:57 触发修改:update ims_fz_order set paysend=1 where id=16988
+2018/1/13 12:45:59 查询订单:select * from ims_fz_order  where id=16988 and paysend=1
+2018/1/13 12:45:59 触发成功修改:update ims_fz_order set paysend=2 where id=16988
+2018/1/13 12:45:59 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:45:59 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:45:59 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:45:59 分销奖金1:update ims_users set balance=balance+0.49,leiji=leiji+0.49,resultnum=resultnum+0.49 where username='sysmanager'
+2018/1/13 12:45:59 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15051,0.49,2,now(),1,'杭州铭玺网络科技有限公司-纸巾出售',0,'oYZxZ0iyiPFQAjMl_ym7rUl7M9Ko','',1,'16988','销售收入','0')
+2018/1/13 12:48:39 触发修改:update ims_fz_order set paysend=1 where id=16990
+2018/1/13 12:48:42 查询订单:select * from ims_fz_order  where id=16990 and paysend=1
+2018/1/13 12:48:42 触发成功修改:update ims_fz_order set paysend=2 where id=16990
+2018/1/13 12:48:42 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:48:42 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:48:42 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:48:57 触发修改:update ims_fz_order set paysend=1 where id=16991
+2018/1/13 12:48:59 查询订单:select * from ims_fz_order  where id=16991 and paysend=1
+2018/1/13 12:48:59 触发成功修改:update ims_fz_order set paysend=2 where id=16991
+2018/1/13 12:48:59 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:48:59 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:48:59 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:49:51 触发修改:update ims_fz_order set paysend=1 where id=16992
+2018/1/13 12:49:54 查询订单:select * from ims_fz_order  where id=16992 and paysend=1
+2018/1/13 12:49:54 触发成功修改:update ims_fz_order set paysend=2 where id=16992
+2018/1/13 12:49:54 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:49:54 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:49:54 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:51:46 触发修改:update ims_fz_order set paysend=1 where id=16993
+2018/1/13 12:51:48 查询订单:select * from ims_fz_order  where id=16993 and paysend=1
+2018/1/13 12:51:48 触发成功修改:update ims_fz_order set paysend=2 where id=16993
+2018/1/13 12:51:48 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 12:51:48 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 12:51:48 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 12:59:58 触发修改:update ims_fz_order set paysend=1 where id=16994
+2018/1/13 13:00:01 查询订单:select * from ims_fz_order  where id=16994 and paysend=1
+2018/1/13 13:00:01 触发成功修改:update ims_fz_order set paysend=2 where id=16994
+2018/1/13 13:00:01 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 13:00:01 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 13:00:01 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 13:01:31 触发修改:update ims_fz_order set paysend=1 where id=16995
+2018/1/13 13:01:33 查询订单:select * from ims_fz_order  where id=16995 and paysend=1
+2018/1/13 13:01:33 触发成功修改:update ims_fz_order set paysend=2 where id=16995
+2018/1/13 13:01:33 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 13:01:33 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 13:01:33 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 13:02:05 触发修改:update ims_fz_order set paysend=1 where id=16996
+2018/1/13 13:02:08 查询订单:select * from ims_fz_order  where id=16996 and paysend=1
+2018/1/13 13:02:08 触发成功修改:update ims_fz_order set paysend=2 where id=16996
+2018/1/13 13:02:08 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 13:02:08 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 13:02:08 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 13:05:05 触发修改:update ims_fz_order set paysend=1 where id=16998
+2018/1/13 13:05:08 查询订单:select * from ims_fz_order  where id=16998 and paysend=1
+2018/1/13 13:05:08 触发成功修改:update ims_fz_order set paysend=2 where id=16998
+2018/1/13 13:05:08 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 13:05:08 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 13:05:08 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 13:05:08 分销奖金1:update ims_users set balance=balance+0.49,leiji=leiji+0.49,resultnum=resultnum+0.49 where username='sysmanager'
+2018/1/13 13:05:08 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15051,0.49,2,now(),1,'杭州铭玺网络科技有限公司-纸巾出售',0,'oYZxZ0hDjfFXVHB6mDZQTvyHLZ-s','',1,'16998','销售收入','0')
+2018/1/13 13:21:51 触发修改:update ims_fz_order set paysend=1 where id=16999
+2018/1/13 13:21:54 查询订单:select * from ims_fz_order  where id=16999 and paysend=1
+2018/1/13 13:21:54 触发成功修改:update ims_fz_order set paysend=2 where id=16999
+2018/1/13 13:21:54 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 13:21:54 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 13:21:54 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 13:21:54 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 13:21:54 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0tjlwlq6ffvYSnx7WIi_y4k','',1,'16999','销售收入','0')
+2018/1/13 14:00:31 触发修改:update ims_fz_order set paysend=1 where id=17001
+2018/1/13 14:00:33 查询订单:select * from ims_fz_order  where id=17001 and paysend=1
+2018/1/13 14:00:33 触发成功修改:update ims_fz_order set paysend=2 where id=17001
+2018/1/13 14:00:33 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:00:33 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:00:33 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:00:52 触发修改:update ims_fz_order set paysend=1 where id=17002
+2018/1/13 14:00:54 查询订单:select * from ims_fz_order  where id=17002 and paysend=1
+2018/1/13 14:00:54 触发成功修改:update ims_fz_order set paysend=2 where id=17002
+2018/1/13 14:00:54 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:00:54 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:00:54 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:01:35 触发修改:update ims_fz_order set paysend=1 where id=17003
+2018/1/13 14:01:36 查询订单:select * from ims_fz_order  where id=17003 and paysend=1
+2018/1/13 14:01:36 触发成功修改:update ims_fz_order set paysend=2 where id=17003
+2018/1/13 14:01:36 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:01:36 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:01:36 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:02:44 触发修改:update ims_fz_order set paysend=1 where id=17004
+2018/1/13 14:02:45 查询订单:select * from ims_fz_order  where id=17004 and paysend=1
+2018/1/13 14:02:45 触发成功修改:update ims_fz_order set paysend=2 where id=17004
+2018/1/13 14:02:45 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:02:45 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:02:45 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:15:30 触发修改:update ims_fz_order set paysend=1 where id=17005
+2018/1/13 14:15:32 查询订单:select * from ims_fz_order  where id=17005 and paysend=1
+2018/1/13 14:15:32 触发成功修改:update ims_fz_order set paysend=2 where id=17005
+2018/1/13 14:15:32 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:15:32 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:15:32 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:22:49 触发修改:update ims_fz_order set paysend=1 where id=17006
+2018/1/13 14:22:51 查询订单:select * from ims_fz_order  where id=17006 and paysend=1
+2018/1/13 14:22:51 触发成功修改:update ims_fz_order set paysend=2 where id=17006
+2018/1/13 14:22:51 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:22:51 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:22:51 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:22:51 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 14:22:51 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0vi9VlNONeHFScSx990eCIE','',1,'17006','销售收入','0')
+2018/1/13 14:30:44 触发修改:update ims_fz_order set paysend=1 where id=17009
+2018/1/13 14:30:46 查询订单:select * from ims_fz_order  where id=17009 and paysend=1
+2018/1/13 14:30:46 触发成功修改:update ims_fz_order set paysend=2 where id=17009
+2018/1/13 14:30:46 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:30:46 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:30:46 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:30:46 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 14:30:46 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0vxtR8wV0-6gfSkevvM3UBQ','',1,'17009','销售收入','0')
+2018/1/13 14:40:27 触发修改:update ims_fz_order set paysend=1 where id=17010
+2018/1/13 14:40:28 查询订单:select * from ims_fz_order  where id=17010 and paysend=1
+2018/1/13 14:40:28 触发成功修改:update ims_fz_order set paysend=2 where id=17010
+2018/1/13 14:40:28 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:40:28 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:40:28 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:40:28 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 14:40:28 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0hnJEGUWRDXFxp_RawmLL60','',1,'17010','销售收入','0')
+2018/1/13 14:48:30 触发修改:update ims_fz_order set paysend=1 where id=17012
+2018/1/13 14:48:33 查询订单:select * from ims_fz_order  where id=17012 and paysend=1
+2018/1/13 14:48:33 触发成功修改:update ims_fz_order set paysend=2 where id=17012
+2018/1/13 14:48:33 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:48:33 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:48:33 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:49:12 触发修改:update ims_fz_order set paysend=1 where id=17013
+2018/1/13 14:49:14 查询订单:select * from ims_fz_order  where id=17013 and paysend=1
+2018/1/13 14:49:14 触发成功修改:update ims_fz_order set paysend=2 where id=17013
+2018/1/13 14:49:14 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:49:14 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:49:14 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:50:40 触发修改:update ims_fz_order set paysend=1 where id=17014
+2018/1/13 14:50:41 查询订单:select * from ims_fz_order  where id=17014 and paysend=1
+2018/1/13 14:50:41 触发成功修改:update ims_fz_order set paysend=2 where id=17014
+2018/1/13 14:50:41 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:50:41 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:50:41 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:50:41 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 14:50:41 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15052,1,2,now(),1,'富阳东方茂电影院下2楼卫生间-出售纸巾',0,'oYZxZ0oelECNtuO8pJoasr8cCRhU','',1,'17014','销售收入','0')
+2018/1/13 14:54:10 触发修改:update ims_fz_order set paysend=1 where id=17015
+2018/1/13 14:54:12 查询订单:select * from ims_fz_order  where id=17015 and paysend=1
+2018/1/13 14:54:12 触发成功修改:update ims_fz_order set paysend=2 where id=17015
+2018/1/13 14:54:12 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:54:12 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:54:12 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 14:54:12 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 14:54:12 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0i3vu-jjQEkS_gA75cfo3Xc','',1,'17015','销售收入','0')
+2018/1/13 14:56:22 触发修改:update ims_fz_order set paysend=1 where id=17016
+2018/1/13 14:56:25 查询订单:select * from ims_fz_order  where id=17016 and paysend=1
+2018/1/13 14:56:25 触发成功修改:update ims_fz_order set paysend=2 where id=17016
+2018/1/13 14:56:25 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 14:56:25 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 14:56:25 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 15:12:42 触发修改:update ims_fz_order set paysend=1 where id=17020
+2018/1/13 15:12:44 查询订单:select * from ims_fz_order  where id=17020 and paysend=1
+2018/1/13 15:12:44 触发成功修改:update ims_fz_order set paysend=2 where id=17020
+2018/1/13 15:12:44 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 15:12:44 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 15:12:44 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 15:12:44 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 15:12:44 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0kyfEY1XyTUCJufttq3-H9c','',1,'17020','销售收入','0')
+2018/1/13 15:43:03 触发修改:update ims_fz_order set paysend=1 where id=17021
+2018/1/13 15:43:06 查询订单:select * from ims_fz_order  where id=17021 and paysend=1
+2018/1/13 15:43:06 触发成功修改:update ims_fz_order set paysend=2 where id=17021
+2018/1/13 15:43:06 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 15:43:06 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 15:43:06 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 15:52:58 触发修改:update ims_fz_order set paysend=1 where id=17022
+2018/1/13 15:53:01 查询订单:select * from ims_fz_order  where id=17022 and paysend=1
+2018/1/13 15:53:01 触发成功修改:update ims_fz_order set paysend=2 where id=17022
+2018/1/13 15:53:01 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 15:53:01 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 15:53:01 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 15:58:05 触发修改:update ims_fz_order set paysend=1 where id=17023
+2018/1/13 15:58:07 查询订单:select * from ims_fz_order  where id=17023 and paysend=1
+2018/1/13 15:58:07 触发成功修改:update ims_fz_order set paysend=2 where id=17023
+2018/1/13 15:58:07 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 15:58:07 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 15:58:07 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 16:09:00 触发修改:update ims_fz_order set paysend=1 where id=17024
+2018/1/13 16:09:04 查询订单:select * from ims_fz_order  where id=17024 and paysend=1
+2018/1/13 16:09:04 触发成功修改:update ims_fz_order set paysend=2 where id=17024
+2018/1/13 16:09:04 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 16:09:04 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 16:09:04 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:37:55 触发修改:update ims_fz_order set paysend=1 where id=17026
+2018/1/13 18:37:57 查询订单:select * from ims_fz_order  where id=17026 and paysend=1
+2018/1/13 18:37:57 触发成功修改:update ims_fz_order set paysend=2 where id=17026
+2018/1/13 18:37:57 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:37:57 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:37:57 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:38:34 触发修改:update ims_fz_order set paysend=1 where id=17027
+2018/1/13 18:38:36 查询订单:select * from ims_fz_order  where id=17027 and paysend=1
+2018/1/13 18:38:36 触发成功修改:update ims_fz_order set paysend=2 where id=17027
+2018/1/13 18:38:36 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:38:36 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:38:36 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:38:36 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 18:38:36 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15101,1,2,now(),1,'富阳东方茂3楼卫生间，游乐场 对面-出售纸巾',0,'oYZxZ0ovOw0ZVFS4FbWaYY3knqwk','',1,'17027','销售收入','0')
+2018/1/13 18:38:49 触发修改:update ims_fz_order set paysend=1 where id=17028
+2018/1/13 18:38:51 查询订单:select * from ims_fz_order  where id=17028 and paysend=1
+2018/1/13 18:38:51 触发成功修改:update ims_fz_order set paysend=2 where id=17028
+2018/1/13 18:38:51 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:38:51 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:38:51 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:38:51 分销奖金1:update ims_users set balance=balance+0.49,leiji=leiji+0.49,resultnum=resultnum+0.49 where username='sysmanager'
+2018/1/13 18:38:51 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15065,0.49,2,now(),1,'杭州滨江垃圾街2号-纸巾出售',0,'oYZxZ0gwoP9C0d8p9iU7p80VfpYA','',1,'17028','销售收入','0')
+2018/1/13 18:41:40 触发修改:update ims_fz_order set paysend=1 where id=17031
+2018/1/13 18:41:43 查询订单:select * from ims_fz_order  where id=17031 and paysend=1
+2018/1/13 18:41:43 触发成功修改:update ims_fz_order set paysend=2 where id=17031
+2018/1/13 18:41:43 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:41:43 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:41:43 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:42:07 触发修改:update ims_fz_order set paysend=1 where id=17032
+2018/1/13 18:42:09 查询订单:select * from ims_fz_order  where id=17032 and paysend=1
+2018/1/13 18:42:09 触发成功修改:update ims_fz_order set paysend=2 where id=17032
+2018/1/13 18:42:09 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:42:09 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:42:09 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:43:13 触发修改:update ims_fz_order set paysend=1 where id=17034
+2018/1/13 18:43:17 查询订单:select * from ims_fz_order  where id=17034 and paysend=1
+2018/1/13 18:43:17 触发成功修改:update ims_fz_order set paysend=2 where id=17034
+2018/1/13 18:43:17 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:43:17 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:43:17 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:47:11 触发修改:update ims_fz_order set paysend=1 where id=17035
+2018/1/13 18:47:12 查询订单:select * from ims_fz_order  where id=17035 and paysend=1
+2018/1/13 18:47:12 触发成功修改:update ims_fz_order set paysend=2 where id=17035
+2018/1/13 18:47:12 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:47:12 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:47:12 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:47:50 触发修改:update ims_fz_order set paysend=1 where id=17036
+2018/1/13 18:47:51 查询订单:select * from ims_fz_order  where id=17036 and paysend=1
+2018/1/13 18:47:51 触发成功修改:update ims_fz_order set paysend=2 where id=17036
+2018/1/13 18:47:51 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:47:51 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:47:51 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:47:51 分销奖金1:update ims_users set balance=balance+0.49,leiji=leiji+0.49,resultnum=resultnum+0.49 where username='sysmanager'
+2018/1/13 18:47:51 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15053,0.49,2,now(),1,'杭州富阳区富春街道文武面馆-出售纸巾',0,'oYZxZ0pFD2clEJMZ_JL0fjHEVsxk','',1,'17036','销售收入','0')
+2018/1/13 18:48:56 触发修改:update ims_fz_order set paysend=1 where id=17038
+2018/1/13 18:48:58 查询订单:select * from ims_fz_order  where id=17038 and paysend=1
+2018/1/13 18:48:58 触发成功修改:update ims_fz_order set paysend=2 where id=17038
+2018/1/13 18:48:58 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:48:58 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:48:58 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:53:35 触发修改:update ims_fz_order set paysend=1 where id=17039
+2018/1/13 18:53:38 查询订单:select * from ims_fz_order  where id=17039 and paysend=1
+2018/1/13 18:53:38 触发成功修改:update ims_fz_order set paysend=2 where id=17039
+2018/1/13 18:53:38 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:53:38 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:53:38 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:55:02 触发修改:update ims_fz_order set paysend=1 where id=17040
+2018/1/13 18:55:04 查询订单:select * from ims_fz_order  where id=17040 and paysend=1
+2018/1/13 18:55:04 触发成功修改:update ims_fz_order set paysend=2 where id=17040
+2018/1/13 18:55:04 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:55:04 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:55:04 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:56:03 触发修改:update ims_fz_order set paysend=1 where id=17041
+2018/1/13 18:56:05 查询订单:select * from ims_fz_order  where id=17041 and paysend=1
+2018/1/13 18:56:05 触发成功修改:update ims_fz_order set paysend=2 where id=17041
+2018/1/13 18:56:05 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:56:05 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:56:05 推荐人2:select commenduser from ims_users where username='a00'
+2018/1/13 18:56:05 分销奖金1:update ims_users set balance=balance+1,leiji=leiji+1,resultnum=resultnum+1 where username='sysmanager'
+2018/1/13 18:56:05 销售_明细:insert into ims_fz_ye_detail (username,uniacid,devNum,chanceMoney,chanceMode,chanceTime,chanceType,chanceReason,balance,acceptedAccount,acceptedUsername,isSettlement,serialNumber,remark,fee) values('sysmanager','15',15012,1,2,now(),1,'富阳东方茂超市2楼卫生间-纸巾出售',0,'oYZxZ0gTElK6jiATJoEHTpEsPZec','',1,'17041','销售收入','0')
+2018/1/13 18:56:30 触发修改:update ims_fz_order set paysend=1 where id=17042
+2018/1/13 18:56:32 查询订单:select * from ims_fz_order  where id=17042 and paysend=1
+2018/1/13 18:56:32 触发成功修改:update ims_fz_order set paysend=2 where id=17042
+2018/1/13 18:56:32 当前账户:select commenduser,onefree,uid from ims_users where username='sysmanager'
+2018/1/13 18:56:32 推荐人1:select commenduser from ims_users where username='admin'
+2018/1/13 18:56:32 推荐人2:select commenduser from ims_users where username='a00'

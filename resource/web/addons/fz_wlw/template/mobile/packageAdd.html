@@ -1,0 +1,273 @@
+{template 'common/header'}
+<style type="text/css">
+	 .help-block img{width: 50px;height: 50px;}
+	 .my_title{background-color:#00abea;line-height: 4rem;text-align: center;color: white;position: relative;}
+	 .my_title_back{ position: absolute;top: 0px;left: 18px;}
+</style>
+
+<div class="my_title"> 
+	<div class="my_title_back">
+		<a onclick="funGoPackage('{$_GPC['devid']}')" style="color: white;">>返回</a>
+	</div> 
+		编辑套餐
+</div> 
+
+<form class="mui-input-group" method="post" onsubmit="return funSubmit()">
+    <div class="mui-input-row">
+        <label>套餐名称</label>
+    	<input type="text" class="form-control" id="tcname" value="{$mode['tcname']}" name="tcname" placeholder="套餐名称">
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>套餐价格(元)</label>
+    	<input type="text" class="form-control" value="{$mode['tcprice']}" id="tcprice" name="tcprice" placeholder="填写数字(不要带单位)">
+    </div>
+        
+    <div class="mui-input-row" >
+        <label>信号数</label>
+	    
+    	<div class="mui-numbox">
+   				 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+				<input type="number" class="mui-numbox-input" value="{$mode['signnum']}" id="signnum" name="signnum" placeholder="填写整数">
+				<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		  </div>
+		  <br/>
+		  
+    </div>
+    <div class="mui-input-row" style="text-align: center;color: red;">
+    	<div>发送的信号数，如：投币器，投一个币为一个信号</div>
+    </div>
+    
+     <div class="mui-input-row" >
+        <label>总库存</label>
+	   
+    	<div class="mui-numbox">
+   				 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+				 <input type="number" class="mui-numbox-input" id="stocks" value="{$mode['stocks']}" name="stocks" placeholder="">
+ 				 <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		  </div>
+    </div>
+    
+    <div class="mui-input-row" style="text-align: center;">
+    	<div>-1为不限制</div>
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>已卖出</label>
+	  
+   		 <div class="mui-numbox">
+   				 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+ 				<input type="number" class="mui-numbox-input" id="sellnum" value="{$mode['sellnum']}" name="sellnum" placeholder="">
+ 				<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		  </div>
+    </div>
+    
+    <div class="mui-input-row" style="text-align: center;">
+    	<div>-1为不限制</div>
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>每人限购</label>
+	  
+    	<div class="mui-numbox">
+   			 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+ 		  	 <input type="number" class="mui-numbox-input" id="quota" value="{$mode['quota']}" name="quota" placeholder="">
+		  	<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		  </div> 
+    </div> 
+    <div class="mui-input-row" style="text-align: center;">
+    	<div>-1为不限制</div>
+    </div>
+    
+    <div class="mui-input-row" style="height: auto;">
+        <label>触发类型</label>
+         <div class="mui-row">
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>脉冲</label>
+					<input type="radio" name="ptype" id="ptype1" value="1">
+				</div> 
+         	</div>
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>定时器</label>
+					<input type="radio" name="ptype" id="ptype2" value="2">
+				</div> 
+         	</div>
+         	
+         </div> 
+    </div>
+    
+    <div class="mui-input-row" >
+        <label>倒计时(秒)</label>
+    	<input type="number" class="form-control" value="{$mode['countdown']}" id="countdown" name="countdown" placeholder="用于定时器(不要带单位)">
+    </div>
+    
+    <div class="mui-input-row" style="display: none;">
+        <label>是否点广告支付</label>
+         <div class="mui-row">
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>不是</label>
+					 <input type="radio" name="isadvpay" id="isadvpay0" value="0">
+				</div> 
+         	</div>
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>是</label>
+					 <input type="radio" name="isadvpay" id="isadvpay1" value="1">
+				</div> 
+         	</div>
+         	
+         </div> 
+    </div>
+    
+    <div class="mui-input-row" style="height: auto;">
+        <label>是否上架</label>
+         <div class="mui-row">
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>上架</label>
+					<input type="radio" name="issend" id="issend1" value="1">
+				</div> 
+         	</div>
+         	
+         	<div class="mui-col-sm-6">
+	         	 <div class="mui-input-row mui-radio mui-left">
+					<label>下架</label>
+					<input type="radio" name="issend" id="issend0" value="0">
+				</div> 
+         	</div>
+         	
+         </div> 
+    </div>
+    
+     <div class="mui-input-row" style="height: auto;">
+        <label>套餐图片</label>
+        <div style="text-align: center;">
+        {php echo tpl_form_field_image('packimg',$mode['packimg']);} 
+        </div>
+     </div>
+     
+     <div class="mui-input-row" style="height: auto;">
+        <label>分类排序</label>
+        	<div class="mui-numbox">
+   			 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+ 		  	<input type="number" class="mui-numbox-input" id="psort" value="{$mode['psort']}" name="psort">
+		  	<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+		  </div>
+    </div>
+    
+     <div class="mui-input-row" style="height: auto;">
+        <label>文字广告</label>
+	    <textarea rows="5" class="form-control" cols="10" id="packdes" name="packdes" placeholder="200字数以内">{$mode['packdes']}</textarea> 
+    </div>
+    
+    <div class="mui-button-row">
+    	 <input type="hidden" name="packageid" value="{$_GPC['packageid']}">
+		 <input type="hidden" name="devid" value="{$_GPC['devid']}">
+		 <input type="hidden" name="token" value="{$_W['token']}">
+    	
+        <button type="submit" name="submit" value="save" class="mui-btn mui-btn-primary" >确认</button> 
+    </div>
+</form>
+
+
+<script type="text/javascript">
+	function funSubmit(){
+	    var tcname=$("#tcname").val();
+	    if(tcname==""){
+	    	mui.alert("套餐名称不能为空");
+				return false;
+	    } 
+	    var tcprice=$("#tcprice").val();
+	    if(tcprice==""){
+	    	mui.alert("套餐价格不能为空");
+				return false;
+	    } 
+		
+	     if(!validateMoney(tcprice)){
+	    	alert("单位为元，套餐价格不对，填写数字,不要带单位");
+			return false;
+		 }
+		 if(parseFloat(tcprice)<=0){
+			 alert("套餐价格不能小于等于0");
+				return false;
+		 }
+	    
+	    var signnum=$("#signnum").val();
+	    if(signnum==""){
+	        	mui.alert("信号数不能为空");
+				return false;
+	    } 
+	    if(parseInt(signnum)<=0){
+			 alert("信号数不能小于等于0");
+				return false;
+		 }
+	    
+		 
+	    var packimg=$("#packimg").val();
+	    if(packimg==""){
+	    	mui.alert("上传套餐图片");
+			 return false;
+	    } 
+	    $.showPreloader();
+		 return true; 
+	}
+	
+	function funGoPackage(devid){
+		window.location="index.php?c=entry&do=packageList&m=fz_wlw&devid="+devid+"&i={$_W['uniacid']}";
+	}
+	
+	$(function(){
+		 var typeid="{$mode['typeid']}";   
+	      $("#typeid").val(typeid);  
+	     var issend="{$mode['issend']}";   
+	 	 if(issend=='0'){ 
+			 $("#issend0").attr("checked","true");
+		 }
+	 	 else{ 
+	 		$("#issend1").attr("checked","true");
+		 }  
+
+	 	var ptype="{$mode['ptype']}";   
+	  	 if(ptype=='2'){ 
+			 $("#ptype2").attr("checked","true");
+		 }
+	  	 else{
+	  		$("#ptype1").attr("checked","true");
+		 } 
+
+	  	var isyuyue="{$mode['isyuyue']}";   
+	   
+	  	 if(isyuyue=='1'){ 
+			 $("#isyuyue1").attr("checked","true");
+		 }
+	  	 else{
+	  		$("#isyuyue2").attr("checked","true");
+		 } 
+
+	  	var isgz="{$mode['isgz']}";   
+	  	 if(isgz=='1'){ 
+			 $("#isgz1").attr("checked","true");
+		 }
+	  	 else{
+	  		$("#isgz0").attr("checked","true");
+		 } 
+
+	  	var isadvpay="{$mode['isadvpay']}";   
+	  	 if(isadvpay=='1'){ 
+			 $("#isadvpay1").attr("checked","true");
+		 }
+	  	 else{
+	  		$("#isadvpay0").attr("checked","true");
+		 } 
+	});
+</script>
+
+{template 'common/footer'}
