@@ -1,6 +1,6 @@
 <?php 
 
- global $_W,$_GPC; 
+global $_W,$_GPC; 
 $pindex = max(1, intval($_GPC['page']));
 $psize = 20; 
  

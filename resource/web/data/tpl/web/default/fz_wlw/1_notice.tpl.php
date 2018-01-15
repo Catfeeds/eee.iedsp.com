@@ -19,11 +19,18 @@
 		</div>
 		<div class="panel-body">
 			<form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
-
+				<input type="hidden" name="devid" value="<?php  echo $_GPC['devid'];?>">
 				<div class="form-group">  
 					<label for="lab" class="col-sm-2 control-label">库存预警通知</label>
 					<div class="col-sm-10">
-						<?php  echo tpl_form_field_fans('manager', array('openid' => $config['manager']['openid'], 'nickname' => $config['manager']['nickname'], 'avatar' => $config['manager']['avatar']), true);?>
+						<?php  echo tpl_form_field_fans('prewarning_notice', array('openid' => $setting['prewarning_notice']['openid'], 'nickname' => $setting['prewarning_notice']['nickname'], 'avatar' => $setting['prewarning_notice']['avatar']), true);?>
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">离线通知</label>
+					<div class="col-sm-10">
+						<?php  echo tpl_form_field_fans('offline_notice', array('openid' => $setting['offline_notice']['openid'], 'nickname' => $setting['offline_notice']['nickname'], 'avatar' => $setting['offline_notice']['avatar']), true);?>
 					</div>
 				</div>
 
@@ -40,6 +47,61 @@
 	</div>
 
 </div>
+<script type="text/html" id="select-fans-containter">
+	<div class="modal fade" id="select-fans-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">选择粉丝</h4>
+				</div>
+				<form class="form-horizontal form" id="form-first-order" action="" method="post">
+					<div class="modal-body">
+						<div class="alert alert-warning">
+							如果待添加的店员未关注公众号, 需要先关注公众号<br>
+							如果未搜索到粉丝,您可以尝试去<a href="<?php  echo url('mc/fans');?>" target="_blank">"粉丝列表"</a>里 同步全部粉丝信息,然后搜索粉丝
+						</div>
+						<div class="form-group" style="margin: 0; margin-bottom: 20px">
+							<div class="input-group">
+								<input class="form-control" name="keyword" id="keyword" type="text" placeholder="输入粉丝昵称或粉丝编号进行搜索"/>
+								<div class="input-group-btn">
+									<a class="btn btn-primary" href="javascript:;" id="search"><i class="fa fa-search"></i> 搜索</a>
+								</div>
+							</div>
+						</div>
+						<table class="table table-hover table-bordered text-center">
+							<thead>
+							<tr>
+								<th class="text-center">头像</th>
+								<th class="text-center">昵称</th>
+								<th class="text-center">性别</th>
+								<th class="text-center">操作</th>
+							</tr>
+							</thead>
+							<tbody class="content">
+							<tr>
+								<td colspan="4">
+									<h4><i class="fa fa-info-circle"></i> <span id="info">输入粉丝昵称或粉丝编号进行搜索</span></h4>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="select-fans-data">
+	<{# for(var i = 0, len = d.length; i < len; i++){ }>
+	<tr>
+		<td><img src="<{d[i].tag.avatar}>" width="50" alt=""/></td>
+		<td><{d[i].nickname}></td>
+		<td><{d[i].tag.sex}></td>
+		<td><a href="javascript:;" class="btn btn-primary" data-fanid="<{d[i].fanid}>">选择</a></td>
+	</tr>
+	<{# } }>
+</script>
 <form class="form-horizontal" action="" method="post" id="frmdel">  
 	<input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 </form>

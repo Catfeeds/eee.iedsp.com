@@ -10,64 +10,6 @@ require IA_ROOT.'/addons/fz_wlw/inc/core/function.php';
 class Fz_wlwModuleSite extends WeModuleSite {
 	
 
-	public function __web($f_name){
-		global $_W, $_GPC;
-		include_once IA_ROOT.'/addons/fz_wlw/inc/web/' . lcfirst(substr($f_name, 5)) . '.inc.php';
-	}
-	public function __mobile($f_name){
-		global $_W, $_GPC;
-		include_once IA_ROOT.'/addons/fz_wlw/inc/mobile/' . lcfirst(substr($f_name, 8)) . '.inc.php';
-	}
-
-
-	public function doWebDevList(){
-		$this->__web(__FUNCTION__);
-	}
-
-	public function doWebDowwnLoadCode(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebOrderList(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebOrderManager(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebPackageAdd(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebPackgeList(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebPacktypeAdd(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebPacktypeList(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebRecardList(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebTxManager(){
-		$this->__web(__FUNCTION__);
-	}
-
-	public function doWebWalletManager(){
-		$this->__web(__FUNCTION__);
-	}
-	public function doWebYedetail(){
-		$this->__web(__FUNCTION__);
-	}
-
-	//添加设备
-	public function doWebDevAdd(){
-	    $this->__web(__FUNCTION__);
-	}
-
-	public function doWebNotice(){
-	    $this->__web(__FUNCTION__);
-	}
-
 	/**
 	 * //添加设备
 	public function doWebDevAdd(){
