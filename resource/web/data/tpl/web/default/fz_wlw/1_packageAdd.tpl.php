@@ -1,13 +1,13 @@
-{template 'common/header'}
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/header', TEMPLATE_INCLUDEPATH)) : (include template('common/header', TEMPLATE_INCLUDEPATH));?>
  
- <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:{$dev['province']}{$dev['city']}{$dev['area']}{$dev['address']}{$dev['devname']}</div>
+ <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:<?php  echo $dev['province'];?><?php  echo $dev['city'];?><?php  echo $dev['area'];?><?php  echo $dev['address'];?><?php  echo $dev['devname'];?></div>
  
 <ul class="nav nav-tabs">
-	<li ><a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}" class="fa fa-reply-all">返回设备列表</a></li>
-	<li ><a href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备信息</a></li> 
-	<li  ><a href="{php echo url('site/entry/yedetail', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">钱包管理</a></li> 
-	 <li ><a href="{php echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">订单管理</a></li>
- 	<li class="active"><a href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">套餐管理</a></li>
+	<li ><a href="<?php  echo url('site/entry/devList', array('m' => 'fz_wlw'));?>" class="fa fa-reply-all">返回设备列表</a></li>
+	<li ><a href="<?php  echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">设备信息</a></li> 
+	<li  ><a href="<?php  echo url('site/entry/yedetail', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">钱包管理</a></li> 
+	 <li ><a href="<?php  echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">订单管理</a></li>
+ 	<li class="active"><a href="<?php  echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">套餐管理</a></li>
 	
 </ul>
 
@@ -16,7 +16,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">添加套餐 &nbsp;
-   	 <a class="label label-info" href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}" >返回套餐管理</a>
+   	 <a class="label label-info" href="<?php  echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>" >返回套餐管理</a>
  	</h3>
   </div>
   <div class="panel-body">
@@ -24,7 +24,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">套餐名称</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="tcname" value="{$mode['tcname']}" name="tcname" placeholder="套餐名称">
+		      <input type="text" class="form-control" id="tcname" value="<?php  echo $mode['tcname'];?>" name="tcname" placeholder="套餐名称">
 		    </div>
 		  </div>
 		  
@@ -33,7 +33,7 @@
 		    <div class="col-sm-10">
 		      
 		       <div class="input-group"> 
-						  <input type="text" class="form-control" value="{$mode['tcprice']}" id="tcprice" name="tcprice" placeholder="不能为空">
+						  <input type="text" class="form-control" value="<?php  echo $mode['tcprice'];?>" id="tcprice" name="tcprice" placeholder="不能为空">
 						  <span class="input-group-addon">元</span>
 						</div> 
 		      
@@ -45,7 +45,7 @@
 		    <div class="col-sm-10">
 
  					<div class="input-group"> 
-						  <input type="number" class="form-control" value="{$mode['signnum']}" id="signnum" name="signnum" placeholder="填写整数">
+						  <input type="number" class="form-control" value="<?php  echo $mode['signnum'];?>" id="signnum" name="signnum" placeholder="填写整数">
 						  <span class="input-group-addon">次</span>
 						</div> 
 						发送的信号数，如：投币器，投一个币为一个信号
@@ -73,7 +73,7 @@
 		    <label for="lab" class="col-sm-2 control-label">倒计时</label>
 		    <div class="col-sm-10"> 
 		       <div class="input-group"> 
-				  <input type="text" class="form-control" value="{$mode['countdown']}" id="countdown" name="countdown" placeholder="单位:秒">
+				  <input type="text" class="form-control" value="<?php  echo $mode['countdown'];?>" id="countdown" name="countdown" placeholder="单位:秒">
 				  <span class="input-group-addon">单位:秒</span>
 				</div>  
 				为0表示不启用,设置了秒数,设备触发后，这段时间处于工作状态，不能再触发支付
@@ -100,7 +100,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">总库存</label>
 		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="stocks" value="{$mode['stocks']}" name="stocks" placeholder="">
+		      <input type="number" class="form-control" id="stocks" value="<?php  echo $mode['stocks'];?>" name="stocks" placeholder="">
 		    	-1为不限制被预订的套餐数
 		    </div>
 		    
@@ -109,7 +109,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">库存预警值</label>
 		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="prewarning_value" value="{$mode['prewarning_value']}" name="prewarning_value" placeholder="">
+		      <input type="number" class="form-control" id="prewarning_value" value="<?php  echo $mode['prewarning_value'];?>" name="prewarning_value" placeholder="">
 		    	当库存到该值时，系统将会通知管理指定管理员，0为不限制
 		    </div>
 		    
@@ -118,7 +118,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">已卖出</label>
 		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="sellnum" value="{$mode['sellnum']}" name="sellnum" placeholder="">
+		      <input type="number" class="form-control" id="sellnum" value="<?php  echo $mode['sellnum'];?>" name="sellnum" placeholder="">
 		    	已卖出的份数默认会根据订单自动更新。您也可以手动设置
 		    </div>
 		  </div>
@@ -126,7 +126,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">每人限购</label>
 		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="quota" value="{$mode['quota']}" name="quota" placeholder="">
+		      <input type="number" class="form-control" id="quota" value="<?php  echo $mode['quota'];?>" name="quota" placeholder="">
 		   	-1为不限制客户购买此套餐数量
 		    </div>
 		  </div>
@@ -151,9 +151,9 @@
 		    <label for="lab" class="col-sm-2 control-label">套餐分类</label>
 		    <div class="col-sm-10">
 		      <select id="typeid" name="typeid" class="form-control"> 
-		    		{loop $types $key $item} 
-		       		 <option value="{$item['id']}">{$item['typename']}</option>
-		        	{/loop}  
+		    		<?php  if(is_array($types)) { foreach($types as $key => $item) { ?> 
+		       		 <option value="<?php  echo $item['id'];?>"><?php  echo $item['typename'];?></option>
+		        	<?php  } } ?>  
 		    	</select> 
 				
 		    </div>
@@ -163,7 +163,7 @@
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">套餐图片</label>
 		    <div class="col-sm-10">
-		    	{php echo tpl_form_field_image('packimg',$mode['packimg']);}
+		    	<?php  echo tpl_form_field_image('packimg',$mode['packimg']);?>
 		    </div>
 		  </div> 
 		   
@@ -171,7 +171,7 @@
 		  <div class="form-group" style="display: none;">  
 		    <label for="lab" class="col-sm-2 control-label">分类排序</label>
 		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="psort" value="{$mode['psort']}" name="psort" placeholder="分类排序">
+		      <input type="number" class="form-control" id="psort" value="<?php  echo $mode['psort'];?>" name="psort" placeholder="分类排序">
 		    </div>
 		  </div>
 		  
@@ -208,21 +208,21 @@
 		  <div class="form-group" style="display: none;">  
 		    <label for="lab" class="col-sm-2 control-label">广告图片</label>
 		    <div class="col-sm-10">
-		    	{php echo tpl_form_field_image('advImg',$mode['advImg']);}
+		    	<?php  echo tpl_form_field_image('advImg',$mode['advImg']);?>
 		    </div>
 		  </div> 
 		  
 		  <div class="form-group" style="display: none;">  
 		    <label for="lab" class="col-sm-2 control-label">广告链接</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="advUrl" value="{$mode['advUrl']}" name="advUrl" placeholder="广告链接">
+		      <input type="text" class="form-control" id="advUrl" value="<?php  echo $mode['advUrl'];?>" name="advUrl" placeholder="广告链接">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">文字广告</label>
 		    <div class="col-sm-10">
-		    	<textarea rows="5" class="form-control" cols="10" id="packdes" name="packdes" placeholder="200字数以内">{$mode['packdes']}</textarea> 
+		    	<textarea rows="5" class="form-control" cols="10" id="packdes" name="packdes" placeholder="200字数以内"><?php  echo $mode['packdes'];?></textarea> 
 		    </div>
 		  </div>
 		  
@@ -230,9 +230,9 @@
 		  
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10">
-		    	<input type="hidden" name="packageid" value="{$_GPC['packageid']}">
-		      <input type="hidden" name="devid" value="{$_GPC['devid']}">
-		      <input type="hidden" name="token" value="{$_W['token']}">
+		    	<input type="hidden" name="packageid" value="<?php  echo $_GPC['packageid'];?>">
+		      <input type="hidden" name="devid" value="<?php  echo $_GPC['devid'];?>">
+		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 		      <input type="submit" name="save" class="btn btn-success" value="保存"> 
 		    </div> 
 		  </div>
@@ -275,9 +275,9 @@
     
 
     $(function(){
-    	 var typeid="{$mode['typeid']}";   
+    	 var typeid="<?php  echo $mode['typeid'];?>";   
  	      $("#typeid").val(typeid);  
- 	     var issend="{$mode['issend']}";   
+ 	     var issend="<?php  echo $mode['issend'];?>";   
 	  	 if(issend=='0'){ 
 			 $("#issend0").attr("checked","true");
 		 }
@@ -285,7 +285,7 @@
 	  		$("#issend1").attr("checked","true");
 		 } 
 
-	  	var ptype="{$mode['ptype']}";   
+	  	var ptype="<?php  echo $mode['ptype'];?>";   
 	  	 if(ptype=='2'){ 
 			 $("#ptype2").attr("checked","true");
 		 }
@@ -293,7 +293,7 @@
 	  		$("#ptype1").attr("checked","true");
 		 } 
 
-	  	var isyuyue="{$mode['isyuyue']}";   
+	  	var isyuyue="<?php  echo $mode['isyuyue'];?>";   
 	   
 	  	 if(isyuyue=='1'){ 
 			 $("#isyuyue1").attr("checked","true");
@@ -302,7 +302,7 @@
 	  		$("#isyuyue2").attr("checked","true");
 		 } 
 
-	  	var isgz="{$mode['isgz']}";   
+	  	var isgz="<?php  echo $mode['isgz'];?>";   
 	  	 if(isgz=='1'){ 
 			 $("#isgz1").attr("checked","true");
 		 }
@@ -310,7 +310,7 @@
 	  		$("#isgz0").attr("checked","true");
 		 } 
 
-	  	var isadvpay="{$mode['isadvpay']}";   
+	  	var isadvpay="<?php  echo $mode['isadvpay'];?>";   
 	  	 if(isadvpay=='1'){ 
 			 $("#isadvpay1").attr("checked","true");
 		 }
@@ -324,4 +324,4 @@
 </script>
 
 
-{template 'common/footer'}
+<?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>

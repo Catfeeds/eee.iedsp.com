@@ -99,7 +99,7 @@ $res = pdo_fetchall($sql, $condition);
 
 $sql_total='SELECT COUNT(*) FROM ' . tablename('fz_order') . $condition_clo;
 $total = pdo_fetchcolumn($sql_total, $condition);
-$pager = pagination2($total, $pindex, $psize);
+$pager = pagination($total, $pindex, $psize);
 
 $sql_money='SELECT SUM(paymoney) as total_money,count(*) as total_count FROM ' . tablename('fz_order') . $condition_clo;
 $total_money = pdo_fetch($sql_money, $condition); 

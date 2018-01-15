@@ -1,14 +1,14 @@
-{template 'common/header'}
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/header', TEMPLATE_INCLUDEPATH)) : (include template('common/header', TEMPLATE_INCLUDEPATH));?>
  
- <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:{$dev['province']}{$dev['city']}{$dev['area']}{$dev['address']}{$dev['devname']}</div>
+ <div class="alert alert-success" role="alert" style="text-align: center;">当前设备:<?php  echo $dev['province'];?><?php  echo $dev['city'];?><?php  echo $dev['area'];?><?php  echo $dev['address'];?><?php  echo $dev['devname'];?></div>
  
 <ul class="nav nav-tabs">
-	<li ><a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}" class="fa fa-reply-all">返回设备列表</a></li>
-	<li ><a href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备信息</a></li> 
-	<li  ><a href="{php echo url('site/entry/yedetail', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">钱包管理</a></li> 
-	 <li class="active"><a href="{php echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">订单管理</a></li>
- 	<li ><a href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">套餐管理</a></li>
- 	<li ><a href="{php echo url('site/entry/notice', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备通知</a></li>
+	<li ><a href="<?php  echo url('site/entry/devList', array('m' => 'fz_wlw'));?>" class="fa fa-reply-all">返回设备列表</a></li>
+	<li ><a href="<?php  echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">设备信息</a></li> 
+	<li  ><a href="<?php  echo url('site/entry/yedetail', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">钱包管理</a></li> 
+	 <li class="active"><a href="<?php  echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">订单管理</a></li>
+ 	<li ><a href="<?php  echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">套餐管理</a></li>
+ 	<li ><a href="<?php  echo url('site/entry/notice', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));?>">设备通知</a></li>
 </ul>
 
 <div class="clearfix">
@@ -52,7 +52,7 @@
 		  		<div class="form-group">  
 			    <label for="lab" class="col-sm-5 control-label">时间查询</label>
 			    <div class="col-sm-7">
-			    	{php echo tpl_form_field_daterange('time', array('starttime'=>($starttime ? date('Y-m-d', $starttime) : false),'endtime'=> ($endtime ? date('Y-m-d', $endtime) : false)));}
+			    	<?php echo tpl_form_field_daterange('time', array('starttime'=>($starttime ? date('Y-m-d', $starttime) : false),'endtime'=> ($endtime ? date('Y-m-d', $endtime) : false)));?>
 			    </div>
 			  </div>
 		  </div>
@@ -61,7 +61,7 @@
 		  		<div class="form-group">  
 			    <label for="lab" class="col-sm-5 control-label">订单号</label>
 			    <div class="col-sm-7">
-			      <input type="text" class="form-control" value="{$_GPC['query_id']}" id="query_id" name="query_id" placeholder="订单号">
+			      <input type="text" class="form-control" value="<?php  echo $_GPC['query_id'];?>" id="query_id" name="query_id" placeholder="订单号">
 			    </div>
 			  </div>
 		  </div>
@@ -71,8 +71,8 @@
 		  
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10"> 
-		      <input type="hidden" name="devid" value="{$_GPC['devid']}">
-		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="hidden" name="devid" value="<?php  echo $_GPC['devid'];?>">
+		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 		      <input type="submit" name="query" id="btn_query" class="btn" value="查询"> 
 		       <input type="hidden" name="page" id="page" value="1">
 		    </div> 
@@ -100,60 +100,60 @@
 				</tr>
 			</thead>
 			<tbody>
-				{loop $res $key $item}
+				<?php  if(is_array($res)) { foreach($res as $key => $item) { ?>
 					<tr>
-					 	<td>{$item['id']}</td>
+					 	<td><?php  echo $item['id'];?></td>
 					 	<td>
-					 	{$item['username']}<br/>
-					 	{$item['devNum']}
+					 	<?php  echo $item['username'];?><br/>
+					 	<?php  echo $item['devNum'];?>
 					 	</td> 
-					 	<td>{$item['buyuser']}</td> 
-					 	<td>{$item['paymoney']}</td>
-					 	<td>{$item['paynum']}</td>  
+					 	<td><?php  echo $item['buyuser'];?></td> 
+					 	<td><?php  echo $item['paymoney'];?></td>
+					 	<td><?php  echo $item['paynum'];?></td>  
 					 	<td>  
-					 		{if $item['paystate']=='0' }
+					 		<?php  if($item['paystate']=='0' ) { ?>
 					 			<span style="color: black;">未支付</span>
-					 		{/if}
-					 		{if $item['paystate']=='1' }
+					 		<?php  } ?>
+					 		<?php  if($item['paystate']=='1' ) { ?>
 					 			<span style="color:green;">已支付</span>
-					 		{/if}
-					 		{if $item['paystate']=='2' }
+					 		<?php  } ?>
+					 		<?php  if($item['paystate']=='2' ) { ?>
 					 			<span style="color:red;">已退款</span>
-					 		{/if}
+					 		<?php  } ?>
 					 	</td>  
 					 	<td>  
-					 		{if $item['paysend']=='0' }
+					 		<?php  if($item['paysend']=='0' ) { ?>
 					 			<span style="color: black;">未触发</span>
-					 		{/if}
-					 		{if $item['paysend']=='1' }
+					 		<?php  } ?>
+					 		<?php  if($item['paysend']=='1' ) { ?>
 					 			<span style="color:blue;">已触发</span>
-					 		{/if}
-					 		{if $item['paysend']=='2' }
+					 		<?php  } ?>
+					 		<?php  if($item['paysend']=='2' ) { ?>
 					 			<span style="color:green;">触发成功</span>
-					 		{/if}
-					 		{if $item['paysend']=='3' }
+					 		<?php  } ?>
+					 		<?php  if($item['paysend']=='3' ) { ?>
 					 			<span style="color:red;">触发失败</span>
-					 		{/if}
+					 		<?php  } ?>
 					 		<br/>
-					 		<span>{$item['remark']}</span>
+					 		<span><?php  echo $item['remark'];?></span>
 					 	</td>  
-					 	<td style="white-space:normal;">{php echo date("Y-m-d H:i:s",$item['addtime'])}</td>   
+					 	<td style="white-space:normal;"><?php  echo date("Y-m-d H:i:s",$item['addtime'])?></td>   
 					 	<td style="white-space:normal;width: 120px;">
-					 		 {if $item['paytime']!=''} 
-					 			{php echo date("Y-m-d H:i:s",$item['paytime'])}<br/>
-					 		{/if}
-					 		{$item['payordernum']} 
+					 		 <?php  if($item['paytime']!='') { ?> 
+					 			<?php  echo date("Y-m-d H:i:s",$item['paytime'])?><br/>
+					 		<?php  } ?>
+					 		<?php  echo $item['payordernum'];?> 
 					 	</td>   
-					 	<td style="white-space:normal;">{$item['devname']}</td>
+					 	<td style="white-space:normal;"><?php  echo $item['devname'];?></td>
 					</tr> 
-			    {/loop} 
+			    <?php  } } ?> 
 			
 			</tbody> 
 	 </table>  
 	 
 	 <!-- 分页 -->
 	 <div style="text-align: center;margin-top: 10px;">
-	 {$pager}
+	 <?php  echo $pager;?>
      </div>	
 	 <!-- 分页end -->
 	 
@@ -161,7 +161,7 @@
 </div> 
 </div>
 <form class="form-horizontal" action="" method="post" id="frmdel">  
-     <input type="hidden" name="token" value="{$_W['token']}">
+     <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 </form>
 <script type="text/javascript">
 	function funQuerySubmit(){
@@ -181,10 +181,10 @@
      }
 
     $(function(){
-		var paystate="{$_GPC['paystate']}";
+		var paystate="<?php  echo $_GPC['paystate'];?>";
 		$("#paystate").val(paystate);
 
-		var paysend="{$_GPC['paysend']}";
+		var paysend="<?php  echo $_GPC['paysend'];?>";
 		$("#paysend").val(paysend);
     	  
     });
@@ -198,4 +198,4 @@
 
   
 
-{template 'common/footer'}
+<?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>

@@ -69,7 +69,7 @@ $res = pdo_fetchall($sql, $condition);
 
 $sql_total='SELECT COUNT(*) FROM ' . tablename('fz_order') . $condition_clo;
 $total = pdo_fetchcolumn($sql_total, $condition);
-$pager = pagination2($total, $pindex, $psize);
+$pager = pagination($total, $pindex, $psize);
 
 //var_dump($pager);exit; 
  

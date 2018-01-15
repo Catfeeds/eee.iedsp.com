@@ -72,7 +72,7 @@ $res = pdo_fetchall($sql,$condition,'');
 
 $sql_total='SELECT COUNT(*) FROM ' . tablename('fz_ye_detail') . $condition_clo;
 $total = pdo_fetchcolumn($sql_total, $condition);
-$pager = pagination2($total, $pindex, $psize);
+$pager = pagination($total, $pindex, $psize);
 
 
 $sql_money='SELECT SUM(chanceMoney) as total_money FROM ' . tablename('fz_ye_detail') . $condition_clo;

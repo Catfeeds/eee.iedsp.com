@@ -1,4 +1,4 @@
-{template 'common/header'}
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/header', TEMPLATE_INCLUDEPATH)) : (include template('common/header', TEMPLATE_INCLUDEPATH));?>
 <style>
 	#allTwoCode td{ padding-bottom: 25px;line-height: 24px;font-weight: bold;}
 </style>
@@ -6,32 +6,32 @@
   <div class="panel-heading">
     <h3 class="panel-title">
     	扫一扫手机管理
-    	{if $_W['username']=='admin'}  
-			<a class="label label-info" href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw'));}" >添加设备</a>
+    	<?php  if($_W['username']=='admin') { ?>  
+			<a class="label label-info" href="<?php  echo url('site/entry/devAdd', array('m' => 'fz_wlw'));?>" >添加设备</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="label label-info" href="{php echo url('site/entry/txManager', array('m' => 'fz_wlw'));}" >提现记录</a>
-		 {/if}
+			<a class="label label-info" href="<?php  echo url('site/entry/txManager', array('m' => 'fz_wlw'));?>" >提现记录</a>
+		 <?php  } ?>
     </h3>
   </div> 
   <div class="panel-body">
   		<div id="phone_manager"> 
   		</div>
-  		{if $_W['role']=='manager'}
+  		<?php  if($_W['role']=='manager') { ?>
   		<span style="color: red;">点击链接复制到自定义菜单</span>
-  		<span onclick="funCopyUrl(this)">{php echo $_W['siteroot']}app/index.php?c=entry&do=devHome&m=fz_wlw&i={$_W['uniacid']}</span>
+  		<span onclick="funCopyUrl(this)"><?php  echo $_W['siteroot']?>app/index.php?c=entry&do=devHome&m=fz_wlw&i=<?php  echo $_W['uniacid'];?></span>
  		<a href="index.php?c=platform&a=menu&" target="_blank">点击去自定义菜单添加[例如:设备管理]</a>
  		<br/>
  		 <!-- 
  		 <span style="color: red;">点击链接复制到自定义菜单</span>
-  		<span onclick="funCopyUrl(this)">{php echo $_W['siteroot']}app/index.php?c=mc&do=home&i={$_W['uniacid']}</span>
+  		<span onclick="funCopyUrl(this)"><?php  echo $_W['siteroot']?>app/index.php?c=mc&do=home&i=<?php  echo $_W['uniacid'];?></span>
  		<a href="index.php?c=platform&a=menu&" target="_blank">点击去自定义菜单添加[例如:会员中心]</a>
  		 <br/>
  		  -->
  		 
-  		<span onclick="funCopyUrl(this)">{php echo $_W['siteroot']}app/index.php?c=entry&do=memberBuyOrder&m=fz_wlw&i={$_W['uniacid']}</span>
+  		<span onclick="funCopyUrl(this)"><?php  echo $_W['siteroot']?>app/index.php?c=entry&do=memberBuyOrder&m=fz_wlw&i=<?php  echo $_W['uniacid'];?></span>
  		<a href="index.php?c=platform&a=menu&" target="_blank">点击去自定义菜单添加[例如:历史订单]</a> 
  		
- 		{/if}
+ 		<?php  } ?>
   </div>
 </div>
 
@@ -46,7 +46,7 @@
 		  		 <div class="form-group">  
 				    <label for="lab" class="col-sm-5 control-label">设备名称</label>
 				    <div class="col-sm-7">
-				      <input type="text" class="form-control" id="devName" value="{$_GPC['devName']}" name="devName" placeholder="设备名称">
+				      <input type="text" class="form-control" id="devName" value="<?php  echo $_GPC['devName'];?>" name="devName" placeholder="设备名称">
 				    </div>
 				  </div>
 		  </div>
@@ -55,7 +55,7 @@
 		  		 <div class="form-group">  
 				    <label for="lab" class="col-sm-5 control-label">设备编号</label>
 				    <div class="col-sm-7">
-				      <input type="text" class="form-control" id="devNo" value="{$_GPC['devNo']}" name="devNo" placeholder="输入编号">
+				      <input type="text" class="form-control" id="devNo" value="<?php  echo $_GPC['devNo'];?>" name="devNo" placeholder="输入编号">
 				    </div>
 				  </div>
 		  </div>
@@ -65,7 +65,7 @@
 		   		 <div class="form-group">  
 				    <label for="lab" class="col-sm-5 control-label">所属用户</label>
 				    <div class="col-sm-7">
-				      <input type="text" class="form-control" id="username" value="{$_GPC['username']}" name="username" placeholder="所属用户">
+				      <input type="text" class="form-control" id="username" value="<?php  echo $_GPC['username'];?>" name="username" placeholder="所属用户">
 				    </div>
 				  </div>
 		   </div>
@@ -92,16 +92,16 @@
 		  
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 		      <input type="submit" name="query" class="btn btn-success"  id="btn_query" value="查询"> 
 		      <input type="button" class="btn btn-info" value="设备转移" onclick="funChangeDev()"> 
 		      
-		      {if $_W['username']=='admin'} 
+		      <?php  if($_W['username']=='admin') { ?> 
 		      <input type="button" class="btn btn-success" value="地图分布" onclick="funShowMap('0','0')"> 
 		      
 		      <input type="button" class="btn btn-success" value="打印二维码" onclick="funShowAllTwoCode()"> 
 		      
-		      {/if}
+		      <?php  } ?>
 		      <input type="hidden" name="page" id="page" value="1">
 		    </div> 
 		  </div>
@@ -111,15 +111,15 @@
 
 <ul class="nav nav-tabs">
 
-	<li {if !isset($_GPC['status'])} class="active" {/if}>
-		<a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}">在线设备</a>
+	<li <?php  if(!isset($_GPC['status'])) { ?> class="active" <?php  } ?>>
+		<a href="<?php  echo url('site/entry/devList', array('m' => 'fz_wlw'));?>">在线设备</a>
 	</li> 
-	<li {if isset($_GPC['status'])} class="active" {/if} >
-		<a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw','status'=>0));}">离线设备</a>
+	<li <?php  if(isset($_GPC['status'])) { ?> class="active" <?php  } ?> >
+		<a href="<?php  echo url('site/entry/devList', array('m' => 'fz_wlw','status'=>0));?>">离线设备</a>
 	</li> 
 </ul>
 <div class="alert alert-success" role="alert" style="text-align: left;">
-	设备数量:{$total}个
+	设备数量:<?php  echo $total;?>个
 </div>
 
 <div class="panel panel-default"> 
@@ -141,87 +141,87 @@
 				</tr>
 			</thead>
 			<tbody>
-				{loop $res $key $item}
+				<?php  if(is_array($res)) { foreach($res as $key => $item) { ?>
 					<tr>
 						<td>
-							<input type="checkbox" name="chk_dev" dev_id="{$item['Id']}" dev_user="{$item['username']}" id="chk_{$item['Id']}"/>
+							<input type="checkbox" name="chk_dev" dev_id="<?php  echo $item['Id'];?>" dev_user="<?php  echo $item['username'];?>" id="chk_<?php  echo $item['Id'];?>"/>
 						</td>
 					  
 					 	<td>
-					 		{$item['devname']}
+					 		<?php  echo $item['devname'];?>
 					 		<br/> 
-					 		 编号:{$item['Id']}
+					 		 编号:<?php  echo $item['Id'];?>
 					 	</td>
 					 	<td>
-					 		{$item['devNum']}  
+					 		<?php  echo $item['devNum'];?>  
 					 		<br/>
-					 		{if $item['simNo']!=''}
-					 			卡号:{php echo substr($item['simNo'],15,5)}
-					 		{/if}
+					 		<?php  if($item['simNo']!='') { ?>
+					 			卡号:<?php  echo substr($item['simNo'],15,5)?>
+					 		<?php  } ?>
 					 	</td>
 					 	<td style="font-size: 12px;"> 
-					 		 {if $item['gpsAddr']!='' && $item['gpsAddr']!='0'}
-					 			{$item['gpsAddr']} 
-					 			 <a onclick='funShowMap("{$item['lat']}","{$item['lng']}")'>地图</a>
-					 		 {/if}
-					 		 {if $item['gpsAddr']=='' || $item['gpsAddr']=='0'}
-					 			{$item['province']}
-						 		{$item['city']}<br/>
-						 		{$item['area']}
-					 		 {/if}
+					 		 <?php  if($item['gpsAddr']!='' && $item['gpsAddr']!='0') { ?>
+					 			<?php  echo $item['gpsAddr'];?> 
+					 			 <a onclick='funShowMap("<?php  echo $item['lat'];?>","<?php  echo $item['lng'];?>")'>地图</a>
+					 		 <?php  } ?>
+					 		 <?php  if($item['gpsAddr']=='' || $item['gpsAddr']=='0') { ?>
+					 			<?php  echo $item['province'];?>
+						 		<?php  echo $item['city'];?><br/>
+						 		<?php  echo $item['area'];?>
+					 		 <?php  } ?>
 					 		
 					 		</td>
 					 	<td>
 					 	 
-					 		{if $item['dstate']=='1' }
+					 		<?php  if($item['dstate']=='1' ) { ?>
 					 			<span style="color: green;">启用</span>
-					 		{/if}
-					 		{if $item['dstate']=='0' }
+					 		<?php  } ?>
+					 		<?php  if($item['dstate']=='0' ) { ?>
 					 			<span style="color:red;">停用</span>
-					 		{/if}
+					 		<?php  } ?>
 					 	</td>
 					 	<td>
 					 	 
-					 		{if $item['bkTime']>(time()-$item['heartbeat']) }
+					 		<?php  if($item['bkTime']>(time()-$item['heartbeat']) ) { ?>
 					 			<span style="color: green;">在线</span>
-					 			<br/>信号:{$item['rssi']}(0到31)
-					 		{else} 
+					 			<br/>信号:<?php  echo $item['rssi'];?>(0到31)
+					 		<?php  } else { ?> 
 					 			<span style="color:red;">离线</span> 
-					 		{/if}
+					 		<?php  } ?>
 					 	</td>
-					 	<td style="display: none;">{$item['devtype']}</td>
-					 	<td>{$item['username']}</td>
+					 	<td style="display: none;"><?php  echo $item['devtype'];?></td>
+					 	<td><?php  echo $item['username'];?></td>
 					 	<td>
-					 		<a class="btn btn-default" onclick="funCreateTwoCode('{$item['Id']}','{$item['username']}')" role="button">
+					 		<a class="btn btn-default" onclick="funCreateTwoCode('<?php  echo $item['Id'];?>','<?php  echo $item['username'];?>')" role="button">
 					 			二维码下载
 					 		</a> 
 					 		 
 					 		<br/>
-					 		<a class="btn btn-default" target="_blank" href="{php echo $_W['siteroot']}app/index.php?c=entry&do=buyList&m=fz_wlw&devid={$item['Id']}&i={$_W['uniacid']}" role="button">
+					 		<a class="btn btn-default" target="_blank" href="<?php  echo $_W['siteroot']?>app/index.php?c=entry&do=buyList&m=fz_wlw&devid=<?php  echo $item['Id'];?>&i=<?php  echo $_W['uniacid'];?>" role="button">
 					 			 预览 
 					 		</a>
 					 	</td>
 					 	<td>
-					 		<a class="btn btn-default" href="{php echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$item['Id']));}" role="button">
+					 		<a class="btn btn-default" href="<?php  echo url('site/entry/devAdd', array('m' => 'fz_wlw','devid'=>$item['Id']));?>" role="button">
 					 			设备编辑
 					 		</a>
 					 		<br/>
-					 		<a class="btn btn-default" href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$item['Id']));}" role="button">
+					 		<a class="btn btn-default" href="<?php  echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$item['Id']));?>" role="button">
 					 			套餐编辑
 					 		</a>
-					 		{if $_W['username']=='admin'}  
+					 		<?php  if($_W['username']=='admin') { ?>  
 					 		<br/>
-					 		<a class="btn btn-default" href="javascript:void(0)" onclick="funCopyDev('{$item['devname']}','{$item['Id']}')"  role="button">
+					 		<a class="btn btn-default" href="javascript:void(0)" onclick="funCopyDev('<?php  echo $item['devname'];?>','<?php  echo $item['Id'];?>')"  role="button">
 					 			复制
 					 		</a>
-					 		<a class="btn btn-default" href="javascript:void(0)" onclick="funDelete('{$item['devname']}','{$item['Id']}')"  role="button">
+					 		<a class="btn btn-default" href="javascript:void(0)" onclick="funDelete('<?php  echo $item['devname'];?>','<?php  echo $item['Id'];?>')"  role="button">
 					 			删除
 					 		</a>
-					 		{/if}
+					 		<?php  } ?>
 					   </td>
-					   <td class="latlng" style="display: none;">{$item['lat']}-{$item['lng']}</td>
+					   <td class="latlng" style="display: none;"><?php  echo $item['lat'];?>-<?php  echo $item['lng'];?></td>
 					</tr> 
-			    {/loop}
+			    <?php  } } ?>
 				 
 			</tbody>
 						
@@ -229,7 +229,7 @@
 	 
 	  <!-- 分页 -->
 	 <div style="text-align: center;margin-top: 10px;">
-	 {$pager}
+	 <?php  echo $pager;?>
      </div>	
 	 <!-- 分页end -->
 	 		
@@ -237,7 +237,7 @@
 </div>
 <form class="form-horizontal" action="" method="post" id="frmdel"> 
 	 <input type="hidden" name="delId" id="delId" value=""> 
-     <input type="hidden" name="token" value="{$_W['token']}">
+     <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 </form>
 
 
@@ -253,10 +253,10 @@
     	util.clip(obj, $(obj).text());
     }
     
-    var uniacid="{$_W['uniacid']}";
+    var uniacid="<?php  echo $_W['uniacid'];?>";
   $(function(){ 
 	  require(['jquery.qrcode'], function(){
-  		var url ="{php echo $_W['siteroot']}app/index.php?c=entry&do=devHome&m=fz_wlw&i="+uniacid;
+  		var url ="<?php  echo $_W['siteroot']?>app/index.php?c=entry&do=devHome&m=fz_wlw&i="+uniacid;
   		$('#phone_manager').html('').qrcode({
   			render: 'canvas',
   			width: 200,
@@ -269,8 +269,8 @@
 
   function funDownLoadCode(){
 	  	var devid=$("#dev_id").val();
-		 //var url="{php echo url('site/entry/downLoadCode', array('m' => 'fz_wlw','devid'=>"+devid+",'i'=>$_W['uniacid']));}";
-		 var url ="{php echo $_W['siteroot']}app/index.php?c=entry&do=downLoadCode&m=fz_wlw&devid="+devid+"&i="+uniacid;
+		 //var url="<?php  echo url('site/entry/downLoadCode', array('m' => 'fz_wlw','devid'=>"+devid+",'i'=>$_W['uniacid']));?>";
+		 var url ="<?php  echo $_W['siteroot']?>app/index.php?c=entry&do=downLoadCode&m=fz_wlw&devid="+devid+"&i="+uniacid;
 	 
 		 window.open(url);
 		//window.location=url;
@@ -279,7 +279,7 @@
     function funCreateTwoCode(devid,username){
      
     	require(['jquery.qrcode'], function(){
-    		var url ="{php echo $_W['siteroot']}app/index.php?c=entry&do=buyList&m=fz_wlw&devid="+devid+"&i="+uniacid;
+    		var url ="<?php  echo $_W['siteroot']?>app/index.php?c=entry&do=buyList&m=fz_wlw&devid="+devid+"&i="+uniacid;
 		 //	$("#dev_qrcode").attr('href',url);
 		 	$("#dev_id").val(devid);
 		 	$("#tip_devid").html(devid);
@@ -377,7 +377,7 @@
 					}
 					ids+=dev_id;
  
-					var url ="{php echo $_W['siteroot']}app/index.php?c=entry&do=buyList&m=fz_wlw&devid="+dev_id+"&i="+uniacid;
+					var url ="<?php  echo $_W['siteroot']?>app/index.php?c=entry&do=buyList&m=fz_wlw&devid="+dev_id+"&i="+uniacid;
 					$("#code"+line_count).html('').qrcode({
 		    			render: 'canvas',
 		    			width: 200,
@@ -496,9 +496,9 @@
 			      <input type="text" class="form-control" id="devNum" value="" name="devNum" placeholder="设备ID">
 			      <select class="form-control" onchange="funSetDevNum(this)">
 			      		<option value="" >可选择</option>
-			      		{loop $fz_devuse $key $item}
-			      			<option value="{$item['devnum']}">{$item['devnum']}</option>
-			      		{/loop} 
+			      		<?php  if(is_array($fz_devuse)) { foreach($fz_devuse as $key => $item) { ?>
+			      			<option value="<?php  echo $item['devnum'];?>"><?php  echo $item['devnum'];?></option>
+			      		<?php  } } ?> 
 			      </select>
 			    </div> 
 			  </div>
@@ -506,7 +506,7 @@
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10"> 
 		      <input type="hidden" name="devid" value="" id="devid">
-		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 		      <input type="submit" name="copy" class="btn btn-success" value="复制"> 
 		    </div> 
 		  </div>
@@ -535,25 +535,25 @@
 			    <div class="col-sm-10">
 			      <select id="newUsername" name="newUsername" class="form-control">  
 		    		<option value="">请选择</option>
-		    		{loop $ssuser $key $item} 
-		       		 <option value="{$item['username']}">{$item['username']}</option>
-		        	{/loop}  
+		    		<?php  if(is_array($ssuser)) { foreach($ssuser as $key => $item) { ?> 
+		       		 <option value="<?php  echo $item['username'];?>"><?php  echo $item['username'];?></option>
+		        	<?php  } } ?>  
 		    	</select> 
 			    </div> 
 			  </div>
-		   {if $_W['role']=='manager'}
+		   <?php  if($_W['role']=='manager') { ?>
 		    <div class="form-group">  
 			    <label for="lab" class="col-sm-2 control-label">重置设备名称</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="newDevname" value="" name="newDevname" placeholder="不填默认为原来的">
 			    </div>
 			</div>
-			{/if}
+			<?php  } ?>
 		   
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10"> 
 		      <input type="hidden" name="changeDevs" value="" id="changeDevs">
-		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
 		      <input type="submit" name="changeDevUser" class="btn btn-success" value="转移"> 
 		    </div> 
 		  </div>
@@ -636,4 +636,4 @@ function funShowMap(lat_s,lng_s){
  }
 </script>
 
-{template 'common/footer'}
+<?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>
