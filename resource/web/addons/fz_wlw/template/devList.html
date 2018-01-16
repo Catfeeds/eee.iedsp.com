@@ -93,6 +93,7 @@
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="hidden" name="status" value="{$_GPC['status']}">
 		      <input type="submit" name="query" class="btn btn-success"  id="btn_query" value="查询"> 
 		      <input type="button" class="btn btn-info" value="设备转移" onclick="funChangeDev()"> 
 		      
@@ -257,6 +258,7 @@
   $(function(){ 
 	  require(['jquery.qrcode'], function(){
   		var url ="{php echo $_W['siteroot']}app/index.php?c=entry&do=devHome&m=fz_wlw&i="+uniacid;
+  		console.log(url);
   		$('#phone_manager').html('').qrcode({
   			render: 'canvas',
   			width: 200,

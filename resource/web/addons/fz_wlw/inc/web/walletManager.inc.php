@@ -18,22 +18,20 @@ if(!empty($_GPC['delId'])){
 	}   
 }
 
+
+
 if($_W['username']=='admin'){
-	$condition=array();
-	$condition_clo='where 1=1';
-	
+	$condition_clo = ' where 1=1';
 	if(isset($_GPC['username']) && $_GPC['username']!=''){
 		 $condition_clo.=" and username=:username";   
 		 $condition[':username']=$_GPC['username'];  
-	}
-	
-	
+	}	
 }else{
-	$condition = array();
-	$condition_clo=" where username=:username";  
+	$condition[':uniacid'] = $_W['uniacid'];
+	$condition_clo = ' where uniacid=:uniacid';
+	$condition_clo .=" and username=:username";  
  	$condition[':username']=$_W['username'];
 } 
-
 
 if(checksubmit('query')){  
 	
@@ -75,8 +73,6 @@ if(checksubmit('query')){
 }  
 $limit=" LIMIT " . ($pindex - 1) * $psize .',' .$psize;
 $sql="SELECT * FROM ".tablename('fz_ye_detail').$condition_clo." order by chanceTime desc ".$limit;
-
-//var_dump($sql);
 
 $res = pdo_fetchall($sql,$condition,'');  
  

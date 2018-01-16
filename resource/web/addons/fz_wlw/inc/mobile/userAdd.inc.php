@@ -16,7 +16,7 @@
 
 // var_dump($_W['openid']);
 
- if(checksubmit('submit')=='save'){ 
+ if($_GPC['token']){ 
  	
  	if($cur_user['isvip']=='0'){
  		

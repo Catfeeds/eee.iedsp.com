@@ -48,11 +48,11 @@
             <div class="head_account_info" style="padding-top:5px; padding-bottom:5px;">
                 <div class="row">
                     <div class="col-33" >
-                        <div class="font_14">{$devuser['balance']}</div>
+                        <div class="font_14">{php echo $devuser['balance'] ? $devuser['balance'] : 0;}</div>
                         <div class="head_font_999999">账户余额</div>
                     </div>
                     <div class="col-33">
-                        <div class="font_14">{$devuser['leiji']}</div>
+                        <div class="font_14">{php echo $devuser['leiji'] ? $devuser['leiji'] : 0;}</div>
                         <div class="head_font_999999">
                         		  累计收益
                         </div>

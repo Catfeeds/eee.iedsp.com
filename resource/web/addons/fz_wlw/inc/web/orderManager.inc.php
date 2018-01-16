@@ -41,18 +41,17 @@ if(!empty($_GPC['setPayStateId'])){
 }
 
 if($_W['username']=='admin'){
-	$condition=array();
-	$condition_clo='where 1=1';
-	
+	$condition = array();
+	$condition_clo = ' where 1=1';
 	if(isset($_GPC['username']) && $_GPC['username']!=''){
 		 $condition_clo.=" and username=:username";   
 		 $condition[':username']=$_GPC['username'];  
 	}
 	
-	
 }else{
 	$condition = array(':uniacid'=>$_W['uniacid']);
-	$condition_clo='where uniacid=:uniacid and username=:username';
+	$condition_clo = ' where uniacid=:uniacid';
+	$condition_clo .=' and username=:username';
 	$condition[':username']=$_W["username"]; 
 } 
 
@@ -93,6 +92,7 @@ if(checksubmit('query')){
 		 
 	}
 }  
+
 $limit=" LIMIT " . ($pindex - 1) * $psize .',' .$psize;
 $sql="SELECT * FROM ".tablename('fz_order').$condition_clo." order by addtime desc ".$limit;
 $res = pdo_fetchall($sql, $condition); 

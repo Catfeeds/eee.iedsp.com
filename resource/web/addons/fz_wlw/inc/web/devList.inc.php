@@ -115,17 +115,26 @@ if(checksubmit('query')){
 		$condition_clo.=' and a.devname=:devname'; 
 		$condition[':devname']=$_GPC['devname'];
 	}
-	
-	if($_W['role'] != 'founder' && isset($_GPC['username']) && $_GPC['username']!=''){
-		$condition_clo.=' and a.username=:username'; 
-		$condition[':username']=$_GPC['username']; 
+
+	if($_W['role'] == 'founder'){
+		if(isset($_GPC['username']) && $_GPC['username']!=''){
+			$condition_clo.=' and a.username=:username'; 
+			$condition[':username']=$_GPC['username']; 
+		}
 	}
+	
+
 	if(isset($_GPC['devNo']) && $_GPC['devNo']!=''){
 		$condition_clo.=' and a.Id=:devNo'; 
 		$condition[':devNo']=$_GPC['devNo']; 
 	}
 
 }  
+if($_W['role'] != 'founder'){
+	$condition_clo.=' and a.username=:username'; 
+	$condition[':username']=$_W['user']['username']; 
+}
+
 if(!isset($_GPC['status'])){
 	$condition_clo .= ' and (a.bkTime > unix_timestamp(now()) - a.heartbeat)';
 }else{

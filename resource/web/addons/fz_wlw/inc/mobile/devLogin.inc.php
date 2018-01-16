@@ -7,10 +7,9 @@
  	message("欢迎回来", $forward); 
  }
  
- 
- if(checksubmit('submit')=='login'){  
+	
+ if($_GPC['token']){  
 
- 	global $_GPC, $_W;
 	load()->model('user');
 	$member = array();
 	$username = trim($_GPC['username']);

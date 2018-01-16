@@ -58,6 +58,7 @@
 			<entry title="设备列表" do="devList" state="" direct="false" />
 			<entry title="钱包管理" do="walletManager" state="" direct="false" />
 			<entry title="订单管理" do="orderManager" state="" direct="false" /> 
+			<entry title="广告管理" do="advManager" state="" direct="false" /> 
 		</menu>
 		<!-- 
 		<home>
