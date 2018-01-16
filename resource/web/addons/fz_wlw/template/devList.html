@@ -108,7 +108,20 @@
 		</form> 
   </div>
 </div>
- <p class="bg-success" style="color: red;">设备数量:{$total}个</p>
+
+<ul class="nav nav-tabs">
+
+	<li {if !isset($_GPC['status'])} class="active" {/if}>
+		<a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw'));}">在线设备</a>
+	</li> 
+	<li {if isset($_GPC['status'])} class="active" {/if} >
+		<a href="{php echo url('site/entry/devList', array('m' => 'fz_wlw','status'=>0));}">离线设备</a>
+	</li> 
+</ul>
+<div class="alert alert-success" role="alert" style="text-align: left;">
+	设备数量:{$total}个
+</div>
+
 <div class="panel panel-default"> 
   <div class="panel-body table-responsive"> 
   		
@@ -119,7 +132,8 @@
                     <th >设备名</th>
                     <th width="160px">设备ID</th>
                     <th >设备地址</th>
-                    <th>状态</th>
+                    <th width="50px">状态</th>
+                    <th>在线状态</th>
                     <th style="display: none;">类型</th> 
                     <th>所属用户</th>
                     <th>二维码</th>
@@ -165,7 +179,8 @@
 					 		{if $item['dstate']=='0' }
 					 			<span style="color:red;">停用</span>
 					 		{/if}
-					 		/ 
+					 	</td>
+					 	<td>
 					 	 
 					 		{if $item['bkTime']>(time()-$item['heartbeat']) }
 					 			<span style="color: green;">在线</span>
@@ -551,7 +566,7 @@
   </div>
 </div>
 <!-- Modal 转移设备  end--> 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2YHuMnZkPHGNKWL2tFva6zRjU8dhs7uB"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=r30FeHO0qF7gX6HrsxG8WPyS"></script>
 
 <!-- Modal 设备分布 -->
 <div class="modal fade" id="myModal_map" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

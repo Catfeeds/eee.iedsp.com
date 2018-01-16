@@ -6,6 +6,8 @@
 	 <li ><a href="{php echo url('site/entry/orderList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">订单管理</a></li>
  	<li ><a href="{php echo url('site/entry/packageList', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">套餐管理</a></li>
 
+ 	<li ><a href="{php echo url('site/entry/notice', array('m' => 'fz_wlw','devid'=>$_GPC['devid']));}">设备通知</a></li>
+
 </ul>
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -58,7 +60,7 @@
 		    	<select id="username" name="username" class="form-control"> 
 		    		
 		    		{loop $ssuser $key $item} 
-		       		 <option value="{$item['username']}">{$item['username']}</option>
+		       		 <option {if $item['username'] == $dev['username']}selected{/if} value="{$item['username']}">{$item['username']}</option>
 		        	{/loop}  
 		    	</select> 
 		    </div>
@@ -70,7 +72,7 @@
 		    	<select id="uniacid" name="uniacid" class="form-control"> 
 		    		<option value="{$_W['uniacid']}">{$_W['uniaccount']['name']}</option>
 		    		 {loop $uniList $key $item} 
-		       		 <option value="{$item['uniacid']}">{$item['name']}</option>
+		       		 <option {if $item['uniacid'] == $dev['uniacid']}selected{/if} value="{$item['uniacid']}">{$item['name']}</option>
 		        	{/loop} 
 		    	</select> 
 		    </div>
@@ -94,7 +96,7 @@
 		    <div class="col-sm-10">
 		      	<div class="radio">
 				  <label>
-				    <input type="radio" name="devtype" id="devtype1" value="1">
+				    <input type="radio" name="devtype" checked="true" id="devtype1" value="1">
 				   	GPRS版本
 				  </label>
 				</div>
@@ -254,12 +256,12 @@
 		    <div class="col-sm-10">
 		    		
 		    	 <label>
-				    <input type="radio" name="dstate" id="dstate1" value="1">
+				    <input type="radio" name="dstate" {if $dev['dstate'] == 1}checked{/if} id="dstate1" value="1">
 					  开启
 				  </label>
 		    	
 		     	 <label>
-				    <input type="radio" name="dstate" id="dstate0" value="0">
+				    <input type="radio" name="dstate" {if $dev['dstate'] == 0}checked{/if} id="dstate0" value="0">
 					  关闭
 				  </label>
 		    </div>

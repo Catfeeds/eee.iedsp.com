@@ -6,12 +6,12 @@
  * @url http://www.fengzhi360.com/
  */
 defined('IN_IA') or exit('Access Denied');
-
+require IA_ROOT.'/addons/fz_wlw/inc/core/function.php';
 class Fz_wlwModuleSite extends WeModuleSite {
 	
 
-	
-	//添加设备
+	/**
+	 * //添加设备
 	public function doWebDevAdd(){
 	   
 	    global $_W,$_GPC; 
@@ -135,6 +135,7 @@ class Fz_wlwModuleSite extends WeModuleSite {
 	    
         include $this->template('devAdd'); 
 	}
+	 */
 	 
 	/*
 	public function doWebDevList(){
@@ -178,5 +179,6 @@ class Fz_wlwModuleSite extends WeModuleSite {
 	public function doMobileWzkjnav() {
 		//这个操作被定义用来呈现 微站快捷功能导航
 	}
+
 
 }

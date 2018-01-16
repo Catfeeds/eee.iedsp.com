@@ -78,6 +78,7 @@ var requireConfig = {
 		'clipboard' : '../lib/clipboard.min',
 		/*单选多选组件 待完善*/
 		'we7.check' : '../lib/we7.check',
+		'tiny' : '../lib/tiny',
 	},
 	shim:{
 		'ueditor': {
