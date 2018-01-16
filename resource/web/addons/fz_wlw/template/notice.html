@@ -20,17 +20,34 @@
 		<div class="panel-body">
 			<form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
 				<input type="hidden" name="devid" value="{$_GPC['devid']}">
+
 				<div class="form-group">  
-					<label for="lab" class="col-sm-2 control-label">库存预警通知</label>
+					<label for="lab" class="col-sm-2 control-label">库存预警通知模板ID</label>
 					<div class="col-sm-10">
-						{php echo tpl_form_field_fans('prewarning_notice', array('openid' => $setting['prewarning_notice']['openid'], 'nickname' => $setting['prewarning_notice']['nickname'], 'avatar' => $setting['prewarning_notice']['avatar']), true);}
+						<input type="text" class="form-control" id="prewarning_notice_tpl_id" value="{$notice_setting['prewarning_notice_tpl_id']}" name="prewarning_notice_tpl_id" placeholder="库存预警通知模板ID">
 					</div>
 				</div>
 
 				<div class="form-group">  
-					<label for="lab" class="col-sm-2 control-label">离线通知</label>
+					<label for="lab" class="col-sm-2 control-label">库存预警通知通知人OPENID</label>
 					<div class="col-sm-10">
-						{php echo tpl_form_field_fans('offline_notice', array('openid' => $setting['offline_notice']['openid'], 'nickname' => $setting['offline_notice']['nickname'], 'avatar' => $setting['offline_notice']['avatar']), true);}
+						<input type="text" class="form-control" id="prewarning_notice_openid" value="{$notice_setting['prewarning_notice_openid']}" name="prewarning_notice_openid" placeholder="库存预警通知通知人OPENID">
+						<!-- {php echo tpl_form_field_fans('prewarning_notice', array('openid' => $setting['prewarning_notice']['openid'], 'nickname' => $setting['prewarning_notice']['nickname'], 'avatar' => $setting['prewarning_notice']['avatar']), true);} -->
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">离线通知模板ID</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="offline_notice_tpl_id" value="{$notice_setting['offline_notice_tpl_id']}" name="offline_notice_tpl_id" placeholder="离线通知模板ID">
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">离线通知通知人OPENID</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="offline_notice_openid" value="{$notice_setting['offline_notice_openid']}" name="offline_notice_openid" placeholder="离线通知通知人OPENID">
+						<!-- {php echo tpl_form_field_fans('offline_notice', array('openid' => $setting['offline_notice']['openid'], 'nickname' => $setting['offline_notice']['nickname'], 'avatar' => $setting['offline_notice']['avatar']), true);} -->
 					</div>
 				</div>
 
@@ -38,7 +55,7 @@
 					<div class="col-sm-offset-2 col-sm-10"> 
 						<input type="hidden" name="devid" value="{$_GPC['devid']}">
 						<input type="hidden" name="token" value="{$_W['token']}">
-						<input type="submit" name="query" id="btn_query" class="btn" value="提交"> 
+						<input type="submit" name="submit" id="btn_query" class="btn" value="提交"> 
 						<input type="hidden" name="page" id="page" value="1">
 					</div> 
 				</div>

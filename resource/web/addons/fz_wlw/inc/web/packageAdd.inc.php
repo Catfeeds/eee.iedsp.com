@@ -22,7 +22,8 @@
  	$mode['quota']=-1;
  	$mode['psort']=-1;
  	$mode['countdown']=0;
- 	$mode['isyuyue']=1;
+    $mode['isyuyue']=1;
+ 	$mode['adv_hits']=1;
  }
  
 $types = pdo_fetchall("SELECT typename,id FROM ".tablename('fz_packtype')." WHERE devid=:devid", array('devid' =>$_GPC['devid'] ));
@@ -37,6 +38,7 @@ if(checksubmit('save')){
     $data['signnum']          =$_GPC['signnum'];
     $data['stocks']           =empty($_GPC['stocks'])?-1:$_GPC['stocks'];
     $data['prewarning_value'] =empty($_GPC['prewarning_value'])?0:$_GPC['prewarning_value'];
+    $data['adv_hits'] =empty($_GPC['adv_hits'])?0:$_GPC['adv_hits'];
     $data['sellnum']          =empty($_GPC['sellnum'])?0:$_GPC['sellnum'];
     $data['quota']            =empty($_GPC['quota'])?-1:$_GPC['quota'];
     $data['issend']           =$_GPC['issend'];

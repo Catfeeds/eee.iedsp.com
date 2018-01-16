@@ -51,39 +51,67 @@
     	if($pack_issend=='0')
     	{
     		message('套餐没上架，请联系商家:'.$dev['telnum']);exit;  
+    	}
+
+
+    	$pack_stocks=intval($package['stocks']);
+
+    	$prewarning_value = intval($package['prewarning_value']);
+    	if($prewarning_value > 0 && $pack_stocks != -1){
+    		if($pack_stocks < $prewarning_value){
+    			sendPrewarningNotice($dev,$package);
+    		}
     	} 
     	
-    	$pack_stocks=intval($package['stocks']);
+    	
     	if($pack_stocks<=0 && $pack_stocks!=-1)
     	{
+    		sendOfflineNotice($dev,$package);
     		message('请联系商家,此库存为:'.$pack_stocks);exit;
     	}
     	
     	//查看是否限购
     	$quota=intval($package['quota']);
-    	 if($quota!=-1 && $quota>0 )
-    	 {
-    	 	$buyUser=$_W['member']['uid'];
-    	 	$starttime = strtotime(date("Y-m-d",time()));
-			$endtime = strtotime(date("Y-m-d",time()));
-			$endtime = !empty($endtime) ? $endtime + 86399 : 0;
-			
-			 if(!empty($buyUser)){
+    	if($quota!=-1 && $quota>0 )
+    	{
+    		$buyUser=$_W['member']['uid'];
+    		$starttime = strtotime(date("Y-m-d",time()));
+    		$endtime = strtotime(date("Y-m-d",time()));
+    		$endtime = !empty($endtime) ? $endtime + 86399 : 0;
+
+    		if(!empty($buyUser)){
 			 	 //查询今天是否购买
-		    	 	$query_sql="select count(id) as COUNT from ims_fz_order where addtime>=".$starttime." and addtime<=".$endtime." and buyuser=".$buyUser." and packageid=".$package['id'];
-		    	 
-		    	 	$order_count=pdo_fetch($query_sql); 
-		    	 	if(!empty($order_count['COUNT'])){
-		    	 		$q_count=intval($order_count['COUNT']);
-		    	 	 
-		    	 		if($q_count>=$quota)
-		    	 		{
-		    	 			message('今日限购数量'.$quota.'次');exit;  
-		    	 		}
-		    	 	} 
-			 } 
-    	 	
-    	 }
+    			$query_sql="select count(id) as COUNT from ims_fz_order where addtime>=".$starttime." and addtime<=".$endtime." and buyuser=".$buyUser." and packageid=".$package['id'];
+
+    			$order_count=pdo_fetch($query_sql); 
+    			if(!empty($order_count['COUNT'])){
+    				$q_count=intval($order_count['COUNT']);
+
+    				if($q_count>=$quota)
+    				{
+    					message('今日限购数量'.$quota.'次');exit;  
+    				}
+    			} 
+    		} 
+
+    	}
+
+    	//查看是否要求点击广告次数
+    	$adv_hits = intval($package['adv_hits']);
+    	
+    	if($adv_hits > 0){
+    		$buyUser=$_W['member']['uid'] ? $_W['member']['uid'] : 0;
+    		$starttime = strtotime(date("Y-m-d",time()));
+    		$endtime = strtotime(date("Y-m-d",time()));
+    		$endtime = !empty($endtime) ? $endtime + 86399 : 0;
+    		if(!empty($buyUser)){
+    			$adv_hit_count = pdo_fetchcolumn('SELECT count(*) FROM '.tablename('fz_adv_hit').' WHERE id in(SELECT id FROM '.tablename('fz_adv_hit').' WHERE createtime>=:starttime and createtime<=:endtime and uniacid=:uniacid and uid=:uid group by aid)',array(':starttime'=>$starttime,':endtime'=>$endtime,':uniacid'=>$_W['uniacid'],':uid'=>$buyUser));
+    		
+    			if($adv_hit_count < $adv_hits){
+    				message('还需要点击广告'.($adv_hits-$adv_hit_count).'次才能购买!');exit;  
+    			}
+    		}
+    	}
     	
     	
  	    $data['uniacid']=$dev['uniacid']; 
@@ -163,6 +191,9 @@
  	if($dev['devlogo']==''){
  		$dev['devlogo']='../app/resource/sui/img/bann5.jpg';
  	}
+
+ 	$advs_type = 1;
+ 	$advs = pdo_fetchall('SELECT * FROM '.tablename('fz_advs').' WHERE uniacid=:uniacid and status=1 order by displayorder desc limit 0,9',array(':uniacid'=>$_W['uniacid']));
  	
  	//判断是否启用了倒计时 查询
  	  $is_pay=1;

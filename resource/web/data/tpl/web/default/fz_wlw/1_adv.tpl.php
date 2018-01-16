@@ -7,140 +7,76 @@
 	 
 </ul>
 
+<?php  if($op == 'display') { ?>
 <div class="clearfix">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">查询</h3>
-  </div>
-  <div class="panel-body">
-     <form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
-		 
-		 <div class="col-sm-6"> 
-	 		<div class="form-group">  
-			    <label for="lab" class="col-sm-5 control-label">订单状态</label>
-			    <div class="col-sm-7">
-			       <select id="paystate" name="paystate" class="form-control"> 	
-			       	 	<option value="">所有</option>
-			    		<option value="0">未支付</option>
-			    		<option value="1">已支付</option>
-			    		<option value="2">已退款</option>
-			    	</select>
-			    </div>
-			  </div>
-		 </div>
-		 
-		 <div class="col-sm-6"> 
-		 		<div class="form-group">  
-				    <label for="lab" class="col-sm-5 control-label">订单状态</label>
-				    <div class="col-sm-7"> 
-				      <select id="paysend" name="paysend" class="form-control"> 	
-				       	 	<option value="">所有</option>
-				    		<option value="0">未触发</option>
-				    		<option value="1">已触发</option>
-				    		<option value="2">触发成功</option>
-				    		<option value="3">触发失败</option>
-				    	</select> 
-				    </div>
-				  </div>
-		 </div>
-		 
-		  <div class="col-sm-6"> 
-		  		<div class="form-group">  
-			    <label for="lab" class="col-sm-5 control-label">时间查询</label>
-			    <div class="col-sm-7">
-			    	<?php echo tpl_form_field_daterange('time', array('starttime'=>($starttime ? date('Y-m-d', $starttime) : false),'endtime'=> ($endtime ? date('Y-m-d', $endtime) : false)));?>
-			    </div>
-			  </div>
-		  </div>
-		  
-		  <div class="col-sm-6"> 
-		  		<div class="form-group">  
-			    <label for="lab" class="col-sm-5 control-label">订单号</label>
-			    <div class="col-sm-7">
-			      <input type="text" class="form-control" value="<?php  echo $_GPC['query_id'];?>" id="query_id" name="query_id" placeholder="订单号">
-			    </div>
-			  </div>
-		  </div>
-		  
-		
-		  
-		  
-		  <div class="form-group"> 
-		    <div class="col-sm-offset-2 col-sm-10"> 
-		      <input type="hidden" name="devid" value="<?php  echo $_GPC['devid'];?>">
-		      <input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
-		      <input type="submit" name="query" id="btn_query" class="btn" value="查询"> 
-		       <input type="hidden" name="page" id="page" value="1">
-		    </div> 
-		  </div>
-		</form> 
-  </div>
-</div>
+<!-- 	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">查询</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
+
+				
+				<div class="form-group"> 
+					<div class="col-sm-offset-2 col-sm-10"> 
+						<input type="hidden" name="devid" value="<?php  echo $_GPC['devid'];?>">
+						<input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
+						<input type="submit" name="query" id="btn_query" class="btn" value="查询"> 
+						<input type="hidden" name="page" id="page" value="1">
+					</div> 
+				</div>
+			</form> 
+		</div>
+	</div> -->
 
 <div class="panel panel-default"> 
   <div class="panel-body table-responsive">
     	<table class="table table-bordered table-hover">
     		<thead>
 				<tr>
-					<th>订单号</th>
-					<th width="160px;">收款用户/设备号</th>
-                    <th>购买用户</th> 
-                    <th>金额(元)</th>  
-                    <th>信号数</th>  
-                    <th>订单状态</th>  
-                    <th>触发状态</th> 
-                    <th>下单时间</th> 
-                    <th>支付信息</th> 
-                    <th>设备描述</th>
+					<th style="width: 5%;">ID</th>
+                    <th style="width: 5%;">排序</th> 
+                    <th style="width: 5%;">图片</th> 
+                    <th style="width: 5%;">标题</th>  
+                    <th style="width: 5%;">链接</th>  
+                    <th style="width: 5%;">状态</th> 
+                    <th style="width: 5%;">累计点击次数</th> 
+                    <th style="width: 5%;">创建时间</th> 
+                    <th style="width: 15%;">操作</th> 
                     
 				</tr>
 			</thead>
 			<tbody>
-				<?php  if(is_array($res)) { foreach($res as $key => $item) { ?>
+				<?php  if(is_array($list)) { foreach($list as $key => $item) { ?>
 					<tr>
 					 	<td><?php  echo $item['id'];?></td>
+					 	<td><?php  echo $item['displayorder'];?></td> 
+					 	<td><img src="<?php  echo tomedia($item['thumb'])?>" style="width: 100%;" alt=""></td> 
+					 	<td><?php  echo $item['title'];?></td>
+					 	<td><a href="<?php  echo $item['linkurl'];?>"><?php  echo $item['linkurl'];?></a> </td>  
+					 	<td>  
+					 		<?php  if($item['status']=='0' ) { ?>
+					 			<span style="color: black;">隐藏</span>
+					 		<?php  } ?>
+					 		<?php  if($item['status']=='1' ) { ?>
+					 			<span style="color:green;">显示</span>
+					 		<?php  } ?>
+
+					 	</td>  
+					 	<td><?php  echo $item['hits'];?></td>
+					 	
+					 	<td style="white-space:normal;"><?php  echo date("Y-m-d H:i:s",$item['createtime'])?></td>   
 					 	<td>
-					 	<?php  echo $item['username'];?><br/>
-					 	<?php  echo $item['devNum'];?>
-					 	</td> 
-					 	<td><?php  echo $item['buyuser'];?></td> 
-					 	<td><?php  echo $item['paymoney'];?></td>
-					 	<td><?php  echo $item['paynum'];?></td>  
-					 	<td>  
-					 		<?php  if($item['paystate']=='0' ) { ?>
-					 			<span style="color: black;">未支付</span>
-					 		<?php  } ?>
-					 		<?php  if($item['paystate']=='1' ) { ?>
-					 			<span style="color:green;">已支付</span>
-					 		<?php  } ?>
-					 		<?php  if($item['paystate']=='2' ) { ?>
-					 			<span style="color:red;">已退款</span>
-					 		<?php  } ?>
-					 	</td>  
-					 	<td>  
-					 		<?php  if($item['paysend']=='0' ) { ?>
-					 			<span style="color: black;">未触发</span>
-					 		<?php  } ?>
-					 		<?php  if($item['paysend']=='1' ) { ?>
-					 			<span style="color:blue;">已触发</span>
-					 		<?php  } ?>
-					 		<?php  if($item['paysend']=='2' ) { ?>
-					 			<span style="color:green;">触发成功</span>
-					 		<?php  } ?>
-					 		<?php  if($item['paysend']=='3' ) { ?>
-					 			<span style="color:red;">触发失败</span>
-					 		<?php  } ?>
-					 		<br/>
-					 		<span><?php  echo $item['remark'];?></span>
-					 	</td>  
-					 	<td style="white-space:normal;"><?php  echo date("Y-m-d H:i:s",$item['addtime'])?></td>   
-					 	<td style="white-space:normal;width: 120px;">
-					 		 <?php  if($item['paytime']!='') { ?> 
-					 			<?php  echo date("Y-m-d H:i:s",$item['paytime'])?><br/>
-					 		<?php  } ?>
-					 		<?php  echo $item['payordernum'];?> 
-					 	</td>   
-					 	<td style="white-space:normal;"><?php  echo $item['devname'];?></td>
+					 		<a class="btn btn-default" href="<?php  echo url('site/entry/advManager', array('m' => 'fz_wlw','id'=>$item['id'],'op'=>'add'));?>" data-toggle="tooltip" data-placement="top" title="编辑" role="button">
+					 			编辑
+					 		</a>
+					 		<a class="btn btn-default" href="<?php  echo url('site/entry/advManager', array('m' => 'fz_wlw','aid'=>$item['id'],'op'=>'statistics'));?>" data-toggle="tooltip" data-placement="top" title="统计" role="button">
+					 			统计
+					 		</a>
+					 		<a class="btn btn-default" href="<?php  echo url('site/entry/advManager', array('m' => 'fz_wlw','id'=>$item['id'],'op'=>'del'));?>" data-toggle="tooltip" data-placement="top" title="删除" onclick="return confirm('确认删除？');return false;"  role="button">
+					 			删除
+					 		</a>
+					 	</td>
 					</tr> 
 			    <?php  } } ?> 
 			
@@ -192,6 +128,73 @@
       
 </script>
 
+<?php  } else if($op == 'add') { ?>
+<div class="clearfix">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">添加</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funQuerySubmit()"> 
+				<input type="hidden" name="id" value="<?php  echo $id;?>">
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">排序</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="displayorder" value="<?php  echo $adv['displayorder'];?>" name="displayorder" placeholder="排序">
+						排序从大到小
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">标题</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="title" value="<?php  echo $adv['title'];?>" name="title" placeholder="标题">
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">链接</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="linkurl" value="<?php  echo $adv['linkurl'];?>" name="linkurl" placeholder="链接">
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">状态</label>
+					<div class="col-sm-10">
+
+						<label>
+							<input type="radio" name="status" <?php  if($adv['status'] == 1) { ?>checked<?php  } ?> id="dstate1" value="1">
+							显示
+						</label>
+
+						<label>
+							<input type="radio" name="status" <?php  if($adv['status'] == 0) { ?>checked<?php  } ?> id="dstate0" value="0">
+							隐藏
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group">  
+					<label for="lab" class="col-sm-2 control-label">广告图片</label>
+					<div class="col-sm-10"> 
+						<?php  echo tpl_form_field_image('thumb',$adv['thumb']);?>  
+						广告图片将以九宫格的形式展示。
+					</div>
+				</div>
+
+				<div class="form-group"> 
+					<div class="col-sm-offset-2 col-sm-10"> 
+						<input type="hidden" name="token" value="<?php  echo $_W['token'];?>">
+						<input type="submit" name="submit" id="btn_query" class="btn" value="提交"> 
+					</div> 
+				</div>
+			</form> 
+		</div>
+	</div>
+
+
+<?php  } ?>
   
 
 <?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>

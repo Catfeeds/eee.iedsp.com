@@ -114,6 +114,15 @@
 		    </div>
 		    
 		  </div>
+
+		  <div class="form-group">  
+		    <label for="lab" class="col-sm-2 control-label">要求广告点击次数</label>
+		    <div class="col-sm-10">
+		      <input type="number" class="form-control" id="adv_hits" value="<?php  echo $mode['adv_hits'];?>" name="adv_hits" placeholder="要求广告点击次数">
+		    	当点击广告次数达到该值时才允许购买,0为不限制
+		    </div>
+		    
+		  </div>
 		  
 		  <div class="form-group">  
 		    <label for="lab" class="col-sm-2 control-label">已卖出</label>

@@ -2,8 +2,28 @@
 <style type="text/css">
  	 a:link{text-decoration: none;}
  	.mui-slider .mui-slider-group .mui-slider-item{height: auto;}
+ 	.advs-box{
+ 		width: 100%;
+ 	}
+ 	.advs-box ul{
+ 		margin: 0;
+ 		padding: 0;
+ 	}
+ 	.advs-box ul li{
+ 		text-decoration: none;
+ 		float: left;
+ 		width: 33%;
+ 		width:-moz-calc((100%-2px)/3);
+ 		width:-webkit-calc((100%-2px)/3);
+ 		width:calc((100%-2px)/3);
+ 		margin-top: 1px;
+ 	}
+ 	.advs-box ul li img{
+ 		width: 100%;
+ 		height: 100%;
+ 	}
 </style>
-
+<?php  if($advs_type == 2) { ?>
 <div class="mui-slider" style="text-align: center;">
   <div class="mui-slider-group mui-slider-loop">
     <!--支持循环，需要重复图片节点-->
@@ -15,7 +35,16 @@
     <!--支持循环，需要重复图片节点-->
     
   </div>
-</div>   
+</div> 
+<?php  } else if($advs_type == 1) { ?>
+	<div class="advs-box">
+		<ul>
+			<?php  if(is_array($advs)) { foreach($advs as $adv) { ?>
+			<li data-id="<?php  echo $adv['id'];?>" data-linkurl="<?php  echo $adv['linkurl'];?>"><img src="<?php  echo tomedia($adv['thumb'])?>" alt=""></li>
+			<?php  } } ?>
+		</ul>
+	</div>
+<?php  } ?>  
 <ul class="mui-table-view"> 
       <li class="mui-table-view-cell mui-collapse">
           <a class="mui-navigate-right" href="#">编号:<?php  echo $dev['Id'];?>(电话:<?php  echo $dev['telnum'];?>)
@@ -123,7 +152,37 @@
     	serverTime = parseInt(show_time);
     } 
 	$(function(){  
-	     
+		var li_height = $('.advs-box ul li').css('width');
+		console.log(parseInt(li_height));
+	    $('.advs-box ul li').css('height',li_height);
+	    $('.advs-box ul').css('height',parseInt(li_height)*3+"px");
+
+	    $('.advs-box ul li').on("click",function(){
+	    	var that = $(this);
+	    	var id = that.data("id");
+	    	var linkurl = that.data("linkurl");
+	    	
+	    	$.ajax({
+	    		url:"<?php  echo $this->createMobileUrl('advs',array('op'=>'hit'))?>",
+	    		type:"post",
+	    		data:{id:id},
+	    		dataType:"json",
+	    		success:function(data){
+	    			var message = data.message;
+	    			console.log(message);
+	    			if(message.errno == -1){
+	    				alert(message.message);
+	    			}else{
+	    				if(linkurl.indexOf('http')>=0 || linkurl.indexOf("https")>=0){
+				    		console.log(linkurl);
+				    		window.location.href = linkurl;
+				    	}
+	    			}
+	    		}
+	    	});
+	    	
+	    });
+
 	    setInterval(function(){ 
 	    	var obj = $("#show_time");  
 	        var nMS=serverTime;

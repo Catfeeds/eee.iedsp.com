@@ -3,7 +3,26 @@
 global $_W,$_GPC; 
  
 $op = $_GPC['op'] ? trim($_GPC['op']) : 'display';
-if($op == 'getFansList'){
+
+if($op == 'display'){
+
+	$setting = pdo_fetch('SELECT * FROM '.tablename('fz_setting').' where uniacid=:uniacid',array(':uniacid'=>$_W['uniacid']));
+	if(checksubmit('submit')){
+		$id = intval($_GPC['id']);
+		$adv_hit = intval($_GPC['adv_hit']);
+		if(empty($id)){
+			$res = pdo_insert('fz_setting',array('adv_hit'=>$adv_hit,'uniacid'=>$_W['uniacid']));
+		}else{
+			$res = pdo_update('fz_setting',array('adv_hit'=>$adv_hit),array('id'=>$id));
+		}
+		if($res){
+			message('保存成功','','success');
+		}else{
+			message('保存失败','','error');
+		}
+	}
+
+}else if($op == 'getFansList'){
 		$key = trim($_GPC['key']);
 	$data = pdo_fetchall('select * from ' . tablename('mc_mapping_fans') . ' where uniacid = :uniacid and (openid = :openid or nickname like :key) order by fanid desc limit 50', array(':uniacid' => $_W['uniacid'], ':key' => '%' . $key . '%', ':openid' => $key), 'fanid');
 
@@ -37,3 +56,4 @@ if($op == 'getFansList'){
 
 	message(array('errno' => 0, 'message' => $fans, 'data' => $data), '', 'ajax');
 }
+include $this->template('setting');  

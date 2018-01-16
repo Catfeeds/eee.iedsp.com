@@ -79,6 +79,7 @@ var requireConfig = {
 		/*单选多选组件 待完善*/
 		'we7.check' : '../lib/we7.check',
 		'tiny' : '../lib/tiny',
+		'echarts' : '../lib/echarts.min',
 	},
 	shim:{
 		'ueditor': {
