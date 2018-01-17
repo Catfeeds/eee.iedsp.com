@@ -67,7 +67,7 @@ if($op == 'display'){
 
 	
 	$startdate = $_GPC['time']['start'] ? $_GPC['time']['start'] : date('Y-m-d');
-	$enddate  = $_GPC['time'['end']] ? $_GPC['time'['end']] : date('Y-m-d');
+	$enddate  = $_GPC['time']['end'] ? $_GPC['time']['end'] : date('Y-m-d');
 
 	if($startdate == $enddate){
 		//按天查看,一天24小时的数据

@@ -1,35 +1,34 @@
 <?php 
 
- global $_W,$_GPC; 
- 
+global $_W,$_GPC; 
 
- if($_GPC['devid']){ 
-    $dev = pdo_get('fz_dev_info', array('Id' =>$_GPC['devid'])); 
- } 
- else{
- 	include $this->template('devList');  
- 	exit;
- } 
- 
+if($_GPC['devid']){ 
+	$dev = pdo_get('fz_dev_info', array('Id' =>$_GPC['devid'])); 
+} 
+else{
+	include $this->template('devList');  
+	exit;
+} 
+
 $pindex = max(1, intval($_GPC['page']));
 $psize = 20; 
- 
+
 if(!empty($_GPC['delId'])){ 
 	$delId=$_GPC['delId'];
 	if($delId!=''){
     	//$result = pdo_delete('fz_package', array('id' => $delId)); 
-    }	
+	}	
 	
 	if (!empty($result)) { 
-	   message('删除成功');  
+		message('删除成功');  
 	}else{
-	   message('删除失败');   
+		message('删除失败');   
 	}   
 } 
 
 $condition = array(':uniacid'=>$_W['uniacid']);
-	$condition_clo='where uniacid=:uniacid and devNum=:devNum';
-	$condition[':devNum']=$dev['Id']; 
+$condition_clo='where uniacid=:uniacid and devNum=:devNum';
+$condition[':devNum']=$dev['Id']; 
 
 
 if(checksubmit('query')){  
@@ -44,8 +43,8 @@ if(checksubmit('query')){
 		$condition[':paysend']=$_GPC['paysend'];
 	}
 	if(isset($_GPC['query_id']) && $_GPC['query_id']!=''){
-		 $condition_clo.=" and id=:query_id";   
-		 $condition[':query_id']=$_GPC['query_id'];  
+		$condition_clo.=" and id=:query_id";   
+		$condition[':query_id']=$_GPC['query_id'];  
 	}
 	
 	if (!empty($_GPC['time']['start'])) {
@@ -60,7 +59,7 @@ if(checksubmit('query')){
 			$condition[':endtime'] = $endtime;
 			$condition_clo .= " AND addtime <= :endtime";
 		}
-		 
+		
 	}
 }  
 $limit=" LIMIT " . ($pindex - 1) * $psize .',' .$psize;
@@ -72,7 +71,7 @@ $total = pdo_fetchcolumn($sql_total, $condition);
 $pager = pagination($total, $pindex, $psize);
 
 //var_dump($pager);exit; 
- 
+
 include $this->template('orderList'); 
 
 

@@ -36,7 +36,7 @@
 				<tr>
 					<th style="width: 5%;">ID</th>
                     <th style="width: 5%;">排序</th> 
-                    <th style="width: 5%;">图片</th> 
+                    <th style="width: 80px;">图片</th> 
                     <th style="width: 5%;">标题</th>  
                     <th style="width: 5%;">链接</th>  
                     <th style="width: 5%;">状态</th> 
@@ -51,7 +51,7 @@
 					<tr>
 					 	<td><?php  echo $item['id'];?></td>
 					 	<td><?php  echo $item['displayorder'];?></td> 
-					 	<td><img src="<?php  echo tomedia($item['thumb'])?>" style="width: 100%;" alt=""></td> 
+					 	<td><img src="<?php  echo tomedia($item['thumb'])?>" style="width: 100px;" alt=""></td> 
 					 	<td><?php  echo $item['title'];?></td>
 					 	<td><a href="<?php  echo $item['linkurl'];?>"><?php  echo $item['linkurl'];?></a> </td>  
 					 	<td>  

@@ -10,6 +10,9 @@ require IA_ROOT.'/addons/fz_wlw/inc/core/function.php';
 class Fz_wlwModuleSite extends WeModuleSite {
 	
 
+	// public function doWebAdvManager(){
+	// 	echo 1;
+	// }
 	/**
 	 * //添加设备
 	public function doWebDevAdd(){
