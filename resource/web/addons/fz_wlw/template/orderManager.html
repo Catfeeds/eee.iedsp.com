@@ -1,6 +1,10 @@
 {template 'common/header'}
- 
 
+<ul class="nav nav-tabs">
+	<li {if $op == 'display'}class="active"{/if} ><a href="{php echo url('site/entry/orderManager', array('m' => 'fz_wlw','op'=>'display'));}">订单列表</a></li> 
+	<li {if $op == 'statistics'}class="active"{/if}><a href="{php echo url('site/entry/orderManager', array('m' => 'fz_wlw','op'=>'statistics'));}">订单图表</a></li> 
+</ul>
+{if $op == 'display'}
 <div class="clearfix">
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -224,6 +228,83 @@
       
 </script>
 
+{else if $op == 'statistics'}
+<div class="clearfix">
+	<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">图表</h3>
+  </div> 
+  <div class="panel-body">
+     <form class="form-horizontal" action="" method="post" id="frmSave" onsubmit="return funSubmit()"> 
+		  
+		  <div class="col-sm-6"> 
+		  		<div class="form-group">  
+			    <label for="lab" class="col-sm-5 control-label">时间查询</label>
+			    <div class="col-sm-7">
+			    	{php echo tpl_form_field_daterange('time', array('starttime'=>($startdate ? $startdate : false),'endtime'=> ($enddate ? $enddate : false)));}
+			    </div>
+			  </div>
+		  </div>
+
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <input type="hidden" name="token" value="{$_W['token']}">
+		      <input type="submit" name="query" class="btn btn-success"  id="btn_query" value="查询"> 
+		    </div> 
+		  </div>
+		</form> 
+  </div>
+</div>
+
+
+	<div class="panel panel-default"> 
+		<div class="panel-body table-responsive">
+			<div id="main" style="height: 400px;width: 100%;">
+				
+			</div>
+		</div>
+	</div> 
+</div>
+<script>
+require(['echarts'], function(echarts){
+	var myChart = echarts.init(document.getElementById('main'));
+	option = {
+    title: {
+        text: '广告点击'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:{$legend}
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: {$xAxis}
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: {$series}
+};
+
+	myChart.setOption(option);
+})
+</script>
+{/if}
   
 
 {template 'common/footer'}

@@ -18,7 +18,7 @@
 		  		<div class="form-group">  
 			    <label for="lab" class="col-sm-5 control-label">时间查询</label>
 			    <div class="col-sm-7">
-			    	{php echo tpl_form_field_daterange('time', array('startdate'=>($startdate ? date('Y-m-d', $startdate) : false),'enddate'=> ($enddate ? date('Y-m-d', $enddate) : false)));}
+			    	{php echo tpl_form_field_daterange('time', array('starttime'=>($startdate ? $startdate : false),'endtime'=> ($enddate ? $enddate : false)));}
 			    </div>
 			  </div>
 		  </div>
