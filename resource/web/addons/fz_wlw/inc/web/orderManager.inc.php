@@ -136,7 +136,6 @@ if($op == 'display'){
 
 		$field = '`username`,FROM_UNIXTIME(`paytime`,"%Y-%m-%d") as ctime,SUM(`paymoney`) as total';
 	}
-	// $startdate = strtotime($startdate);
 
 	$condtion = ' where paystate=1 and paytime>=:starttime and paytime<=:endtime';
 	$params[':starttime'] = $start;
@@ -150,6 +149,7 @@ if($op == 'display'){
 	$sql = 'SELECT '.$field.' FROM '.tablename('fz_order').$condtion.' group by username,ctime';
 	$list = pdo_fetchall($sql,$params);
 
+
 	$legend = array();
 	$series = array();
 
@@ -161,7 +161,7 @@ if($op == 'display'){
 		foreach($xAxis as $k => $v){
 			if($val['ctime'] == $k || $val['ctime'] == $v){
 
-				$series[$val['username']]['data'][$k] = intval($val['total']);
+				$series[$val['username']]['data'][$k] = $val['total'];
 			}else{
 				if($series[$val['username']]['data'][$k] != 0){
 					continue;
@@ -175,6 +175,129 @@ if($op == 'display'){
 	$series = json_encode(array_values($series));
 	$xAxis = json_encode(array_values($xAxis));
 	
+} else if($op == 'sale_statistics'){
+
+	$startdate = $_GPC['time']['start'] ? $_GPC['time']['start'] : date('Y-m-d');
+	$enddate  = $_GPC['time']['end'] ? $_GPC['time']['end'] : date('Y-m-d');
+
+	if($startdate == $enddate){
+		//按天查看,一天24小时的数据
+		$start = strtotime($startdate);
+		$end   = strtotime('+1 day',$start);
+
+		$xAxis = ['0点','1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点','13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点'];
+
+		$field = '`username`,FROM_UNIXTIME(`paytime`,"%H") as ctime,SUM(`paynum`) as total';
+	}else{
+		$start = strtotime($startdate);
+		$end = strtotime('+1 day',strtotime($enddate));
+		$days = ( $end - $start)/24/3600 + 1;
+		for($i=0;$i<$days;$i++){
+			$xAxis[] = date('Y-m-d',strtotime('+'.$i.' day',$start));
+		}
+
+		$field = '`username`,FROM_UNIXTIME(`paytime`,"%Y-%m-%d") as ctime,SUM(`paynum`) as total';
+	}
+
+	$condtion = ' where paystate=1 and paytime>=:starttime and paytime<=:endtime and paymoney>0';
+	$params[':starttime'] = $start;
+	$params[':endtime'] = $end;
+
+	if($_W['username'] !='admin'){
+		$condition .= ' and username=:username';
+		$params[':username'] = $_W['username'];
+	}
+
+	$sql = 'SELECT '.$field.' FROM '.tablename('fz_order').$condtion.' group by username,ctime';
+	$list = pdo_fetchall($sql,$params);
+
+
+	$legend = array();
+	$series = array();
+
+	foreach($list as $key=>$val){
+		$legend[$val['username']] = $val['username'];
+		$series[$val['username']]['name'] = $val['username'];
+		$series[$val['username']]['type'] = 'line';
+		$series[$val['username']]['stack'] = '总额';
+		foreach($xAxis as $k => $v){
+			if($val['ctime'] == $k || $val['ctime'] == $v){
+
+				$series[$val['username']]['data'][$k] = $val['total'];
+			}else{
+				if($series[$val['username']]['data'][$k] != 0){
+					continue;
+				}
+				$series[$val['username']]['data'][$k] = 0;
+			}
+
+		}
+	}
+	$legend = json_encode(array_values($legend));
+	$series = json_encode(array_values($series));
+	$xAxis = json_encode(array_values($xAxis));
+	
+} else if ($op == 'free_statistics'){
+
+	$startdate = $_GPC['time']['start'] ? $_GPC['time']['start'] : date('Y-m-d');
+	$enddate  = $_GPC['time']['end'] ? $_GPC['time']['end'] : date('Y-m-d');
+
+	if($startdate == $enddate){
+		//按天查看,一天24小时的数据
+		$start = strtotime($startdate);
+		$end   = strtotime('+1 day',$start);
+
+		$xAxis = ['0点','1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点','13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点'];
+
+		$field = '`username`,FROM_UNIXTIME(`paytime`,"%H") as ctime,SUM(`paynum`) as total';
+	}else{
+		$start = strtotime($startdate);
+		$end = strtotime('+1 day',strtotime($enddate));
+		$days = ( $end - $start)/24/3600 + 1;
+		for($i=0;$i<$days;$i++){
+			$xAxis[] = date('Y-m-d',strtotime('+'.$i.' day',$start));
+		}
+
+		$field = '`username`,FROM_UNIXTIME(`paytime`,"%Y-%m-%d") as ctime,SUM(`paynum`) as total';
+	}
+
+	$condtion = ' where paystate=1 and paytime>=:starttime and paytime<=:endtime and paymoney=0';
+	$params[':starttime'] = $start;
+	$params[':endtime'] = $end;
+
+	if($_W['username'] !='admin'){
+		$condition .= ' and username=:username';
+		$params[':username'] = $_W['username'];
+	}
+
+	$sql = 'SELECT '.$field.' FROM '.tablename('fz_order').$condtion.' group by username,ctime';
+	$list = pdo_fetchall($sql,$params);
+
+
+	$legend = array();
+	$series = array();
+
+	foreach($list as $key=>$val){
+		$legend[$val['username']] = $val['username'];
+		$series[$val['username']]['name'] = $val['username'];
+		$series[$val['username']]['type'] = 'line';
+		$series[$val['username']]['stack'] = '总额';
+		foreach($xAxis as $k => $v){
+			if($val['ctime'] == $k || $val['ctime'] == $v){
+
+				$series[$val['username']]['data'][$k] = $val['total'];
+			}else{
+				if($series[$val['username']]['data'][$k] != 0){
+					continue;
+				}
+				$series[$val['username']]['data'][$k] = 0;
+			}
+
+		}
+	}
+	$legend = json_encode(array_values($legend));
+	$series = json_encode(array_values($series));
+	$xAxis = json_encode(array_values($xAxis));
 }
 //var_dump($pager);exit; 
 

@@ -46,7 +46,7 @@
 <script>
 require(['echarts'], function(echarts){
 	var myChart = echarts.init(document.getElementById('main'));
-	option = {
+	var option = {
     title: {
         text: '广告点击'
     },
