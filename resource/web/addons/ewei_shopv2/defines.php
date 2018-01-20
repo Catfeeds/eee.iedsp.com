@@ -6,7 +6,7 @@ if (is_file(__DIR__ . '/defines-local.php'))
 {
     require_once __DIR__ . '/defines-local.php';
 }
-!defined('EWEI_SHOPV2_DEBUG') && define('EWEI_SHOPV2_DEBUG',false);
+!defined('EWEI_SHOPV2_DEBUG') && define('EWEI_SHOPV2_DEBUG',true);
 !defined('EWEI_SHOPV2_PATH') && define('EWEI_SHOPV2_PATH',IA_ROOT.'/addons/ewei_shopv2/');
 !defined('EWEI_SHOPV2_CORE') && define('EWEI_SHOPV2_CORE', EWEI_SHOPV2_PATH .'core/');
 !defined('EWEI_SHOPV2_DATA') && define('EWEI_SHOPV2_DATA', EWEI_SHOPV2_PATH .'data/');

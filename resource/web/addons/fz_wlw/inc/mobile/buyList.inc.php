@@ -96,6 +96,22 @@
 
     	}
 
+    	//一个人24小时之内只能免费领取一次
+    	if($package['tcprice'] == 0){
+    		$expre_time = 24*3600;
+    		$endtime = time();
+    		$starttime = $endtime - $expre_time;
+    		$sql = 'select * from '.tablename('fz_order').' where addtime>=:starttime and addtime<=:endtime and buyuser=:buyuser';
+    		$params[':starttime'] = $starttime;
+    		$params[':endtime'] = $endtime;
+    		$params['buyuser'] = $buyUser;
+    		$has = pdo_fetch($sql,$params);
+    		if($has){
+    			message('一个人24小时之内只能免费领取一次');
+    			exit;
+    		}
+    	}
+
     	//查看是否要求点击广告次数
     	$adv_hits = intval($package['adv_hits']);
     	
